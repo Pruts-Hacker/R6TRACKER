@@ -1,19 +1,17 @@
 package com.example.r6tracker;
 
+import com.example.r6tracker.Screens.Home;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class HelloApplication extends Application {
     @Override
@@ -52,7 +50,24 @@ public class HelloApplication extends Application {
         txtWachtwoord.setPromptText("Wachtwoord");
         txtWachtwoord.setId("wachtwoord");
 
-        inlog.getChildren().addAll(txtNaam, txtWachtwoord);
+
+        Button btnLogIn = new Button("Inloggen");
+        btnLogIn.setId("knop");
+        btnLogIn.setAlignment(Pos.CENTER);
+
+        btnLogIn.setOnAction(e -> {
+            String username = txtNaam.getText();
+            String password = txtWachtwoord.getText();
+            // Validate the credentials
+            if (isValidCredentials(username, password)) {
+                // Switch to the new page
+                switchToNewPage();
+            } else {
+                // Show an error message
+                System.out.println("Invalid credentials");
+            }
+        });
+        inlog.getChildren().addAll(txtNaam, txtWachtwoord, btnLogIn);
         root.add(txtWelkom,1,0);
         root.add(inlog,1,1);
 
@@ -68,4 +83,17 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+
+
+    private boolean isValidCredentials(String username, String password) {
+        // Replace this with your own validation logic
+        return username.equals("admin") && password.equals("admin");
+    }
+
+    private void switchToNewPage() {
+        Home home = new Home();
+        System.out.println("Switched to the new page");
+    }
 }
+

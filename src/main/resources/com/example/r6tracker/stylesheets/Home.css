@@ -1,0 +1,26 @@
+#Root{
+
+    -fx-background-image: url("../images/thumb-1920-676369.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+
+
+}
+
+
+#title{
+    -fx-font-size: 24;
+    -fx-font-weight: 900;
+    -fx-text-fill: #ffff;
+}
+
+#toppane{
+    -fx-border-width: 0 0 5 0; /* top right bottom left */
+    -fx-border-color: #ffff;
+}
+
+#leftpane{
+    -fx-border-width: 0 5 0 0; /* top right bottom left */
+    -fx-border-color: #ffff;
+}

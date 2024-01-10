@@ -5,4 +5,6 @@ module com.example.r6tracker {
 
     opens com.example.r6tracker to javafx.fxml;
     exports com.example.r6tracker;
+    exports com.example.r6tracker.Screens;
+    opens com.example.r6tracker.Screens to javafx.fxml;
 }
