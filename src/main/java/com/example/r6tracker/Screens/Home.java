@@ -33,7 +33,7 @@ public class Home {
     titleLabel.setPrefSize(1050,55);
         TranslateTransition tt = new TranslateTransition(Duration.seconds(2), titleLabel);
         tt.setFromX(0);
-        tt.setToX(456);
+        tt.setToX(463);
         tt.play();
 
 
@@ -94,25 +94,28 @@ public class Home {
 
        GridPane squares = new GridPane();
        squares.setAlignment(Pos.CENTER);
-       squares.setPadding(new Insets(0,0,0,210));
-       squares.setHgap(35);
-       squares.setVgap(35);
+       squares.setPadding(new Insets(0,0,0,25));
+       squares.setHgap(30);
+       squares.setVgap(30);
 
        Pane square = new Pane();
        square.setId("box");
-       square.setPrefSize(250,250);
+       square.setPrefSize(450,250);
+       square.setOnMouseClicked(e->{
+           switchToNewPage2();
+       });
 
        Pane square2 = new Pane();
         square2.setId("box2");
-        square2.setPrefSize(250,250);
+        square2.setPrefSize(450,250);
 
         Pane square3 = new Pane();
         square3.setId("box3");
-        square3.setPrefSize(250,250);
+        square3.setPrefSize(450,250);
 
         Pane square4 = new Pane();
         square4.setId("box4");
-        square4.setPrefSize(250,250);
+        square4.setPrefSize(450,250);
 
         squares.add(square,1,0);
         squares.add(square2,2,0);
