@@ -68,17 +68,6 @@ public class Home {
             switchToNewPage3();
         });
 
-    Button menu3 = new Button("Leaderboard");
-    menu3.setId("menu3");
-        menu3.setOnAction(e->{
-            switchToNewPage4();
-        });
-
-    Button menu4 = new Button("Search");
-    menu4.setId("menu4");
-        menu4.setOnAction(e->{
-            switchToNewPage5();
-        });
 
     GridPane leftPane = new GridPane();
     leftPane.setId("leftpane");
@@ -87,8 +76,7 @@ public class Home {
     leftPane.setPrefSize(150,550);
     leftPane.add(menu1,1,0);
     leftPane.add(menu2,1,1);
-    leftPane.add(menu3,1,2);
-    leftPane.add(menu4,1,3);
+
 
 
 
@@ -109,18 +97,10 @@ public class Home {
         square2.setId("box2");
         square2.setPrefSize(450,250);
 
-        Pane square3 = new Pane();
-        square3.setId("box3");
-        square3.setPrefSize(450,250);
-
-        Pane square4 = new Pane();
-        square4.setId("box4");
-        square4.setPrefSize(450,250);
 
         squares.add(square,1,0);
         squares.add(square2,2,0);
-        squares.add(square3,1,1);
-        squares.add(square4,2,1);
+
 
     HBox hbox = new HBox();
 
@@ -151,13 +131,4 @@ public class Home {
         System.out.println("Switched to the new page");
     }
 
-    private void switchToNewPage4() {
-        Leaderboard leaderboard = new Leaderboard();
-        System.out.println("Switched to the new page");
-    }
-
-    private void switchToNewPage5() {
-        Search search = new Search();
-        System.out.println("Switched to the new page");
-    }
 }

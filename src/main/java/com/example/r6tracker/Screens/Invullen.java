@@ -17,7 +17,7 @@ import javafx.util.Duration;
 public class Invullen {
 
 
-    public Invullen(){
+    public Invullen() {
         Stage stage3 = new Stage();
 
         GridPane root = new GridPane();
@@ -25,27 +25,23 @@ public class Invullen {
 
         Label titleLabel = new Label("Statistieken Invullen");
         titleLabel.setId("title");
-        titleLabel.setPrefSize(1050,55);
+        titleLabel.setPrefSize(1050, 55);
         TranslateTransition tt = new TranslateTransition(Duration.seconds(2), titleLabel);
         tt.setFromX(0);
         tt.setToX(312);
         tt.play();
 
 
-
         Label name = new Label("R6TRACKER");
         name.setId("name");
-        name.setPrefSize(150,55);
+        name.setPrefSize(150, 55);
         name.setPadding(new Insets(15));
-
-
-
 
 
         HBox topPane = new HBox();
         topPane.setId("toppane");
         topPane.setAlignment(Pos.TOP_LEFT);
-        topPane.setPrefSize(1200,55);
+        topPane.setPrefSize(1200, 55);
 
 
         topPane.getChildren().addAll(name, titleLabel);
@@ -54,82 +50,72 @@ public class Invullen {
         Button menu1 = new Button("Statistieken Invullen");
         menu1.setId("menu1");
         menu1.setStyle("");
-        menu1.setOnAction(e->{
+        menu1.setOnAction(e -> {
             switchToNewPage2();
         });
 
 
         Button menu2 = new Button("Statistieken Bekijken");
         menu2.setId("menu2");
-        menu2.setOnAction(e->{
+        menu2.setOnAction(e -> {
             switchToNewPage3();
         });
 
-        Button menu3 = new Button("Leaderboard");
-        menu3.setId("menu3");
-        menu3.setOnAction(e->{
-            switchToNewPage4();
-        });
 
-        Button menu4 = new Button("Search");
-        menu4.setId("menu4");
-        menu4.setOnAction(e->{
-            switchToNewPage5();
-        });
 
         GridPane leftPane = new GridPane();
         leftPane.setId("leftpane");
         leftPane.setVgap(15);
-        leftPane.setPadding(new Insets(20,0,0,10));/* top right bottom left */
-        leftPane.setPrefSize(150,550);
-        leftPane.add(menu1,1,0);
-        leftPane.add(menu2,1,1);
-        leftPane.add(menu3,1,2);
-        leftPane.add(menu4,1,3);
+        leftPane.setPadding(new Insets(20, 0, 0, 10));/* top right bottom left */
+        leftPane.setPrefSize(150, 550);
+        leftPane.add(menu1, 1, 0);
+        leftPane.add(menu2, 1, 1);
 
 
 
         GridPane Inputs = new GridPane();
         Inputs.setAlignment(Pos.CENTER);
-        Inputs.setPadding(new Insets(0,0,0,250));
+        Inputs.setPadding(new Insets(0, 0, 0, 250));
         Inputs.setHgap(35);
         Inputs.setVgap(35);
 
         ComboBox Name = new ComboBox();
         Name.setId("box");
-        Name.setPrefSize(175,35);
+        Name.setPrefSize(175, 35);
         Name.getItems().add("Attacker");
         Name.getItems().add("Defender");
         Name.setPromptText("Opperator Type");
 
         TextField Name2 = new TextField();
         Name2.setId("box2");
-        Name2.setPrefSize(175,35);
+        Name2.setPrefSize(175, 35);
         Name2.setPromptText("Opperator Name");
 
         TextField Name3 = new TextField();
         Name3.setId("box3");
-        Name3.setPrefSize(175,35);
+        Name3.setPrefSize(175, 35);
         Name3.setPromptText("Kills");
 
         TextField Name4 = new TextField();
         Name4.setId("box4");
-        Name4.setPrefSize(175,35);
+        Name4.setPrefSize(175, 35);
         Name4.setPromptText("Deaths");
 
         TextField Name5 = new TextField();
         Name5.setId("box5");
-        Name5.setPrefSize(175,35);
+        Name5.setPrefSize(175, 35);
         Name5.setPromptText("Wins");
 
         TextField Name6 = new TextField();
         Name6.setId("box6");
-        Name6.setPrefSize(175,35);
+        Name6.setPrefSize(175, 35);
         Name6.setPromptText("Losses");
+
+        Button Name8 = new Button("Best Weapon");
 
         ComboBox Name7 = new ComboBox();
         Name7.setId("box7");
-        Name7.setPrefSize(175,35);
+        Name7.setPrefSize(175, 35);
         Name7.setPromptText("Best Weapon");
         Name7.getItems().add(".44 Mag Semi-Auto");
         Name7.getItems().add("1911 TACOPS");
@@ -161,7 +147,7 @@ public class Invullen {
         Name7.getItems().add("Commando 9");
         Name7.getItems().add("CSRX 300");
         Name7.getItems().add("Desert Eagle");
-        Name7.getItems().add( "DP27");
+        Name7.getItems().add("DP27");
         Name7.getItems().add("F90");
         Name7.getItems().add("FAMAS");
         Name7.getItems().add("Five-seven");
@@ -240,35 +226,31 @@ public class Invullen {
         Name7.getItems().add("Vector .45 ACP");
 
         Button btnOpslaan = new Button("Opslaan");
-        btnOpslaan.setPrefSize(175,35);
+        btnOpslaan.setPrefSize(175, 35);
 
 
-        Inputs.add(Name,1,0);
-        Inputs.add(Name2,2,0);
-        Inputs.add(Name3,1,1);
-        Inputs.add(Name4,2,1);
-        Inputs.add(Name5,1,2);
-        Inputs.add(Name6,2,2);
-        Inputs.add(Name7,1,3);
-        Inputs.add(btnOpslaan,2,3);
+        Inputs.add(Name, 1, 0);
+        Inputs.add(Name2, 2, 0);
+        Inputs.add(Name3, 1, 1);
+        Inputs.add(Name4, 2, 1);
+        Inputs.add(Name5, 1, 2);
+        Inputs.add(Name6, 2, 2);
+        Inputs.add(Name8, 1, 3);
+        Inputs.add(btnOpslaan, 2, 3);
 
         HBox hbox = new HBox();
 
 
-
-
         hbox.getChildren().addAll(leftPane, Inputs);
-        root.add(topPane,1,0);
-        root.add(hbox,1,1);
-        Scene scene3 = new Scene(root,1200,600);
+        root.add(topPane, 1, 0);
+        root.add(hbox, 1, 1);
+        Scene scene3 = new Scene(root, 1200, 600);
         scene3.getStylesheets().add(getClass().getResource("/com/example/r6tracker/stylesheets/Invullen.css").toString());
         stage3.setScene(scene3);
         stage3.setTitle("R6TRACKER");
         stage3.show();
 
     }
-
-
 
 
     private void switchToNewPage2() {
@@ -280,16 +262,8 @@ public class Invullen {
         Inzien inzien = new Inzien();
         System.out.println("Switched to the new page");
     }
-
-    private void switchToNewPage4() {
-        Leaderboard leaderboard = new Leaderboard();
-        System.out.println("Switched to the new page");
-    }
-
-    private void switchToNewPage5() {
-        Search search = new Search();
-        System.out.println("Switched to the new page");
-    }
 }
+
+
 
 

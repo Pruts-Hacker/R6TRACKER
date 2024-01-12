@@ -32,7 +32,7 @@
 
 #menu1{
     -fx-background-color: transparent;
-    -fx-text-fill: #ff0000;
+    -fx-text-fill: #ffff;
     -fx-font-size: 13;
 }
 
@@ -42,54 +42,11 @@
 
 #menu2{
     -fx-background-color: transparent;
-    -fx-text-fill: #ffff;
+    -fx-text-fill: #ff0000;
     -fx-font-size: 13;
 
 }
 
 #menu2:pressed{
     -fx-background-color:  #222A31;
-}
-
-
-#box{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box2{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box3{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box4{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box5{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box6{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
-}
-
-#box7{
-    -fx-background-color: #ffff;
-    -fx-font-size: 14;
-
 }
