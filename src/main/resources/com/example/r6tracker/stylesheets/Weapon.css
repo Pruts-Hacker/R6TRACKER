@@ -1,0 +1,31 @@
+#Root{
+    -fx-background-color:  #222A31;
+
+}
+
+
+#title{
+    -fx-font-size: 36;
+    -fx-font-weight: 900;
+    -fx-text-fill: #ffff;
+}
+
+#toppane{
+    /*-fx-border-width: 0 0 5 0; !* top right bottom left *!*/
+    /*-fx-border-color: #ffff;*/
+    -fx-background-color: #3e4759;
+}
+
+#name{
+    -fx-background-color: #323846;
+    -fx-text-fill: #ffff;
+    -fx-font-weight: 900;
+    -fx-font-size: 20;
+
+}
+
+#leftpane{
+    /*-fx-border-width: 0 5 0 0; !* top right bottom left *!*/
+    /*-fx-border-color: #ffff;*/
+    -fx-background-color: #1a1c20;
+}

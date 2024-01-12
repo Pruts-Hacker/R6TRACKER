@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
@@ -32,44 +33,92 @@ public class HelloApplication extends Application {
         txtWelkom.setId("welkom");
         txtWelkom.setAlignment(Pos.TOP_CENTER);
 
-        VBox inlog = new VBox();
+        GridPane inlog = new GridPane();
         inlog.setId("inlog");
-        inlog.setSpacing(15);
+        inlog.setHgap(15);
         inlog.setPadding(new Insets(10));
 
 
 
-        TextField txtNaam = new TextField();
-        txtNaam.setPromptText("Gebruikersnaam");
-        txtNaam.setId("gebruikersnaam");
+        TextField Naam = new TextField();
+        Naam.setPromptText("Gebruikersnaam");
+        Naam.setId("gebruikersnaam");
+        Naam.setPrefSize(175,25);
+
+
+        TextField gamertag = new TextField();
+        gamertag.setPromptText("Gamertag");
+        gamertag.setId("gamertag");
+        gamertag.setPrefSize(175,25);
 
 
 
+        TextField level = new TextField();
+        level.setPromptText("Level");
+        level.setId("level");
+        level.setPrefSize(175,25);
 
-        TextField txtWachtwoord = new TextField();
-        txtWachtwoord.setPromptText("Wachtwoord");
-        txtWachtwoord.setId("wachtwoord");
+
+        ComboBox rank = new ComboBox();
+        rank.setPromptText("Rank");
+        rank.setId("rank");
+        rank.setPrefSize(175,25);
+        rank.getItems().add("Koper 5");
+        rank.getItems().add("Koper 4");
+        rank.getItems().add("Koper 3");
+        rank.getItems().add("Koper 2");
+        rank.getItems().add("Koper 1");
+        rank.getItems().add("Brons 5");
+        rank.getItems().add("Brons 4");
+        rank.getItems().add("Brons 3");
+        rank.getItems().add("Brons 2");
+        rank.getItems().add("Brons 1");
+        rank.getItems().add("Silver 5");
+        rank.getItems().add("Silver 4");
+        rank.getItems().add("Silver 3");
+        rank.getItems().add("Silver 2");
+        rank.getItems().add("Silver 1");
+        rank.getItems().add("Gold 5");
+        rank.getItems().add("Gold 4");
+        rank.getItems().add("Gold 3");
+        rank.getItems().add("Gold 2");
+        rank.getItems().add("Gold 1");
+        rank.getItems().add("Platinum 5");
+        rank.getItems().add("Platinum 4");
+        rank.getItems().add("Platinum 3");
+        rank.getItems().add("Platinum 2");
+        rank.getItems().add("Platinum 1");
+        rank.getItems().add("Emerald 5");
+        rank.getItems().add("Emerald 4");
+        rank.getItems().add("Emerald 3");
+        rank.getItems().add("Emerald 2");
+        rank.getItems().add("Emerald 1");
+        rank.getItems().add("Daimond 5");
+        rank.getItems().add("Daimond 4");
+        rank.getItems().add("Daimond 3");
+        rank.getItems().add("Daimond 2");
+        rank.getItems().add("Daimond 1");
+        rank.getItems().add("Champion");
 
 
-        Button btnLogIn = new Button("Inloggen");
+
+        Button btnLogIn = new Button("Opslaan");
         btnLogIn.setId("knop");
         btnLogIn.setAlignment(Pos.CENTER);
 
         btnLogIn.setOnAction(e -> {
-            String username = txtNaam.getText();
-            String password = txtWachtwoord.getText();
-            // Validate the credentials
-            if (isValidCredentials(username, password)) {
-                // Switch to the new page
-                switchToNewPage();
-            } else {
-                // Show an error message
-                System.out.println("Invalid credentials");
-            }
+
+            switchToNewPage();
+
         });
-        inlog.getChildren().addAll(txtNaam, txtWachtwoord, btnLogIn);
+        inlog.add(Naam,1,0);
+        inlog.add(gamertag,2,0);
+        inlog.add(level,1,1);
+        inlog.add(rank,2,1);
+        inlog.add(btnLogIn,1,3);
         root.add(txtWelkom,1,0);
         root.add(inlog,1,1);
+
 
 
         Scene scene = new Scene(root, 1200, 600);
