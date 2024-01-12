@@ -1,6 +1,7 @@
 module com.example.r6tracker {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.r6tracker to javafx.fxml;
