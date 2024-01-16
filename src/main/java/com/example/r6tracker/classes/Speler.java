@@ -38,7 +38,7 @@ public class Speler {
         this.rank = rank;
     }
 
-    public Speler(String naam, String gamertag, int level, String rank) {
+    public Speler(String rank, String naam, String gamertag, int level) {
         this.naam = naam;
         this.gamertag = gamertag;
         this.level = level;
