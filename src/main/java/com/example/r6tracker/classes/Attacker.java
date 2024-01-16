@@ -1,5 +1,5 @@
 package com.example.r6tracker.classes;
 
-public class Attacker{
+public class Attacker extends Opperator{
 
 }

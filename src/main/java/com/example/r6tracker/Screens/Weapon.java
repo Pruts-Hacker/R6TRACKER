@@ -1,9 +1,11 @@
 package com.example.r6tracker.Screens;
 
+import com.example.r6tracker.classes.WeaponResultController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -251,11 +253,81 @@ public class Weapon {
         Name5.getItems().add("36");
         Name5.getItems().add("35");
 
+        WeaponResultController wrc = new WeaponResultController();
+
         Button btnOpslaan = new Button("Opslaan");
         btnOpslaan.setId("opslaan");
         btnOpslaan.setPrefSize(175, 35);
+        btnOpslaan.setOnAction(e -> {
 
-        Inputs.add(Name1,1,0);
+            if (Name1.getValue() == null || Name2.getValue() == null || Name3.getValue() == null || Name4.getValue() == null || Name5.getValue() == null ) {
+                System.out.println("een of meerdere velden zijn niet correct ingevlud");
+
+                //  alert wanneer velden leeg zijn
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Waarschuwing");
+                alert.setHeaderText("een of meerdere velden zijn niet ingevuld");
+                alert.showAndWait();
+
+                //   kleuren textfield border veranderen wanneer leeg
+                if (Name1.getValue() == null) {
+                    Name1.setStyle("-fx-border-color: red");
+                }else {
+                    Name1.setStyle("-fx-border-color: black");
+                }
+
+                if (Name2.getValue() == null) {
+                    Name2.setStyle("-fx-border-color: red");
+                }else {
+                    Name2.setStyle("-fx-border-color: black");
+                }
+
+                if (Name3.getValue() == null) {
+                    Name3.setStyle("-fx-border-color: red");
+                }else {
+                    Name3.setStyle("-fx-border-color: black");
+                }
+
+                if (Name4.getValue() == null) {
+                    Name4.setStyle("-fx-border-color: red");
+                }else {
+                    Name4.setStyle("-fx-border-color: black");
+                }
+
+                if (Name5.getValue() == null) {
+                    Name5.setStyle("-fx-border-color: red");
+                }else {
+                    Name5.setStyle("-fx-border-color: black");
+                }}
+
+            //ingevoerde data ophalen van de combobox
+            String naam = Name1.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String damage = Name2.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String capacity = Name3.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String firerate = Name4.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String mobility = Name5.getValue().toString();
+
+
+
+
+
+            //  gegevens opslaan in array
+            wrc.addWeaponResult(naam, damage, capacity, firerate, mobility);
+
+
+
+//            db.opslaanKlant(KlantNummer, Voornaam, Achternaam, voorschotDouble);
+
+
+
+
+        });
+
+            Inputs.add(Name1,1,0);
         Inputs.add(Name2,2,0);
         Inputs.add(Name3,1,1);
         Inputs.add(Name4,2,1);
