@@ -1,13 +1,11 @@
 package com.example.r6tracker.Screens;
 
+import com.example.r6tracker.classes.MatchResultController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -189,10 +187,85 @@ public class Invullen {
             switchToNewPage4();
         });
 
-
+        MatchResultController mrc = new MatchResultController();
 
         Button btnOpslaan = new Button("Opslaan");
         btnOpslaan.setPrefSize(175, 35);
+        btnOpslaan.setOnAction(e->{
+            if (Name.getValue() == null || Name2.getValue() == null || Name3.getText().isEmpty() || Name4.getText().isEmpty() || Name5.getText().isEmpty() || Name6.getText().isEmpty()) {
+                System.out.println("een of meerdere velden zijn niet correct ingevlud");
+
+                //  alert wanneer velden leeg zijn
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Waarschuwing");
+                alert.setHeaderText("een of meerdere velden zijn niet ingevuld");
+                alert.showAndWait();
+
+                //   kleuren textfield border veranderen wanneer leeg
+                if (Name.getValue() == null) {
+                    Name.setStyle("-fx-border-color: red");
+                }else {
+                    Name.setStyle("-fx-border-color: black");
+                }
+
+                if (Name2.getValue() == null) {
+                    Name2.setStyle("-fx-border-color: red");
+                }else {
+                    Name2.setStyle("-fx-border-color: black");
+                }
+
+                if (Name3.getText().isEmpty()) {
+                    Name3.setStyle("-fx-border-color: red");
+                }else {
+                    Name3.setStyle("-fx-border-color: black");
+                }
+
+                if (Name4.getText().isEmpty()) {
+                    Name4.setStyle("-fx-border-color: red");
+                }else {
+                    Name4.setStyle("-fx-border-color: black");
+                }
+                if (Name5.getText().isEmpty()) {
+                    Name5.setStyle("-fx-border-color: red");
+                }else {
+                    Name5.setStyle("-fx-border-color: black");
+                }
+
+                if (Name6.getText().isEmpty()) {
+                    Name6.setStyle("-fx-border-color: red");
+                }else {
+                    Name6.setStyle("-fx-border-color: black");
+                }}
+
+            //ingevoerde data ophalen van de combobox
+            String type = Name.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String naam = Name2.getValue().toString();
+            //ingevoerde data ophalen van de textfield kills
+            String kills = Name3.getText();
+            //ingevoerde data ophalen van de textfield deaths
+            String deaths = Name4.getText();
+            //ingevoerde data ophalen van de textfield wins
+            String wins = Name5.getText();
+            //ingevoerde data ophalen van de textfield losses
+            String losses = Name6.getText();
+
+
+
+
+
+
+            //  gegevens opslaan in array
+            mrc.addMatchResult(kills, deaths, wins, losses);
+
+
+
+//            db.opslaanKlant(KlantNummer, Voornaam, Achternaam, voorschotDouble);
+
+
+
+
+        });
 
 
         Inputs.add(Name, 1, 0);
