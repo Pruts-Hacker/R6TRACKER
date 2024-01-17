@@ -84,106 +84,82 @@ public class Invullen {
         Name.getItems().add("Defender");
         Name.setPromptText("Opperator Type");
 
-        ComboBox Name2 = new ComboBox();
-        Name2.setId("box2");
-        Name2.setPrefSize(175, 35);
-        Name2.setPromptText("Opperator Name");
-        Name2.getItems().add("Recruit");
-        Name2.getItems().add("Sledge");
-        Name2.getItems().add("Thatcher");
-        Name2.getItems().add("Ash");
-        Name2.getItems().add("Thermite");
-        Name2.getItems().add("Twitch");
-        Name2.getItems().add("Montagne");
-        Name2.getItems().add("Glaz");
-        Name2.getItems().add("Fuze");
-        Name2.getItems().add("Blitz");
-        Name2.getItems().add("Iq");
-        Name2.getItems().add("Buck");
-        Name2.getItems().add("Blackbeard");
-        Name2.getItems().add("Capitão");
-        Name2.getItems().add("Hibana");
-        Name2.getItems().add("Jackal");
-        Name2.getItems().add("Ying");
-        Name2.getItems().add("Zofia");
-        Name2.getItems().add("Dokkaebi");
-        Name2.getItems().add("Lion");
-        Name2.getItems().add("Finka");
-        Name2.getItems().add("Maverick");
-        Name2.getItems().add("Nomad");
-        Name2.getItems().add("Nøkk");
-        Name2.getItems().add("Amaru");
-        Name2.getItems().add("Kali");
-        Name2.getItems().add("Iana");
-        Name2.getItems().add("Ace");
-        Name2.getItems().add("Zero");
-        Name2.getItems().add("Flores");
-        Name2.getItems().add("Osa");
-        Name2.getItems().add("Sens");
-        Name2.getItems().add("Grim");
-        Name2.getItems().add("Brava");
-        Name2.getItems().add("Ram");
-        Name2.getItems().add("Smoke");
-        Name2.getItems().add("Mute");
-        Name2.getItems().add("Castle");
-        Name2.getItems().add("Pulse");
-        Name2.getItems().add("Dock");
-        Name2.getItems().add("Rook");
-        Name2.getItems().add("Kapkan");
-        Name2.getItems().add("Tachanka");
-        Name2.getItems().add("Jäger");
-        Name2.getItems().add("Bandit");
-        Name2.getItems().add("Frost");
-        Name2.getItems().add("Valkyrie");
-        Name2.getItems().add("Caviera");
-        Name2.getItems().add("Echo");
-        Name2.getItems().add("Mira");
-        Name2.getItems().add("Lesion");
-        Name2.getItems().add("Ella");
-        Name2.getItems().add("Vigil");
-        Name2.getItems().add("Alibi");
-        Name2.getItems().add("Maestro");
-        Name2.getItems().add("Clash");
-        Name2.getItems().add("kaid");
-        Name2.getItems().add("Mozzie");
-        Name2.getItems().add("Warden");
-        Name2.getItems().add("Goyo");
-        Name2.getItems().add("Wamai");
-        Name2.getItems().add("Oryx");
-        Name2.getItems().add("Melusi");
-        Name2.getItems().add("Aruni");
-        Name2.getItems().add("Thunderbird");
-        Name2.getItems().add("Thorn");
-        Name2.getItems().add("Azami");
-        Name2.getItems().add("Solis");
-        Name2.getItems().add("Fenrir");
-        Name2.getItems().add("Tubarao");
 
-        TextField Name3 = new TextField();
+
+            ComboBox Name2 = new ComboBox<>();
+            Name2.setId("box2");
+            Name2.setPrefSize(175, 35);
+            Name2.setPromptText("Operator Name");
+
+        ComboBox Name3 = new ComboBox<>();
         Name3.setId("box3");
         Name3.setPrefSize(175, 35);
-        Name3.setPromptText("Kills");
+        Name3.setPromptText("Ability");
 
-        TextField Name4 = new TextField();
+        ComboBox Name4 = new ComboBox<>();
         Name4.setId("box4");
         Name4.setPrefSize(175, 35);
-        Name4.setPromptText("Deaths");
+        Name4.setPromptText("Move Speed");
+        Name4.getItems().addAll("1", "2", "3");
+
+
+        Name.setOnAction(e -> {
+                if ("Attacker".equals(Name.getValue())) {
+                    Name2.getItems().clear();
+                    Name2.getItems().addAll("Ace", "Amaru", "Ash", "Blackbeard","Blitz", "Brava", "Buck", "Capitão", "Dokkaebi", "Finka", "Flores", "Fuze", "Glaz",
+                            "Gridlock", "Grim", "Hibana", "Iana", "IQ", "Jackal", "Kali", "Lion", "Maverick", "Montagne", "Nomad", "Nøkk", "Osa", "Ram", "Recruit", "Sens",
+                            "Sledge", "Thatcher", "Thermite", "Twitch", "Ying", "Zero", "Zofia");
+
+                    Name3.getItems().clear();
+                    Name3.getItems().addAll("Sniper Eye", "Cluster Charge", "Electronics Scan", "Flash Shield","Shock Drone", "Extendable Shield", "Hardbreach Charge", "M120 Crem", "Emp Grenades", "Hammer", "Side Shotgun", "Gun Shield", "Crossbow",
+                            "Hardbreach Charges", "Footprint Scanner", "Cluster Flashbangs", "  Side Grenadelauncher", "Logic Bomb", "Healing Charge", "Orbital Scan", "Breaching Tool", "Repulsion Grenades", "Spike Mats", "Camera Invisibility", "Instant Rappel", "Demolition shots", "Clone Drone", "Spy Camera", "Bomb Drones",
+                            "Thorn", "Thunderbird", "Tubarão", "Valkyrie", "Vigil", "Wamai", "Warden");
+
+
+
+                } else if ("Defender".equals(Name.getValue())) {
+                    Name2.getItems().clear();
+                    Name2.getItems().addAll("Alibi", "Aruni", "Azami", "Bandit","Castle", "Caviera", "Clash", "Doc", "Echo", "Ela", "Fenrir", "Frost", "Goyo",
+                            "Jäger", "Kaid", "Kapkan", "Lesion", "Maestro", "Melusi", "Mira", "Mozzie", "Mute", "Oryx", "Pulse", "Recruit", "Rook", "Smoke", "Solis", "Tachanka",
+                            "Clear Shield", "Smoke Wall", "Scan Pest", "Hacking Drone", "Demolition Drone");
+
+                    Name3.getItems().clear();
+                    Name3.getItems().addAll("Signal Jammers", "Toxic Gas", "Cardiac Sensor", "Bulletproof Barricades","Stim pistol", "Ceramic Plates", "Shockwire Batteries", "ADS Devices", "Explosive Traps", "Fire Grenades", "Welcome Mat", "Sticky Cameras", "Special Pistol",
+                            "Yokai Drones", "Bulletproof Windows", "Poison Mines", "Concussion Mines", "Cloaking Device", "Evil Eye", "Holograms", "Shock Shield", "Electroclaw", "Pest Robots", "Smart Glasses", "Fire Cannisters", "Wall Dash", "Laser Barrier", "Healing Station", "Spike Trap",
+                            "Kabi Barrier", "Smoke Screen", "Mag-Net", "Banshee", "Spec-IO", "Zoto Cannister");
+
+
+                }
+            });
+
+
+
 
         TextField Name5 = new TextField();
         Name5.setId("box5");
         Name5.setPrefSize(175, 35);
-        Name5.setPromptText("Wins");
+        Name5.setPromptText("Kills");
 
         TextField Name6 = new TextField();
         Name6.setId("box6");
         Name6.setPrefSize(175, 35);
-        Name6.setPromptText("Losses");
+        Name6.setPromptText("Deaths");
 
-        Button Name7 = new Button("Best Weapon");
+        TextField Name7 = new TextField();
         Name7.setId("box7");
         Name7.setPrefSize(175, 35);
+        Name7.setPromptText("Wins");
 
-        Name7.setOnAction(e->{
+        TextField Name8 = new TextField();
+        Name8.setId("box8");
+        Name8.setPrefSize(175, 35);
+        Name8.setPromptText("Losses");
+
+        Button Name9 = new Button("Best Weapon");
+        Name9.setId("box9");
+        Name9.setPrefSize(175, 35);
+
+        Name9.setOnAction(e->{
             switchToNewPage4();
         });
 
@@ -192,7 +168,7 @@ public class Invullen {
         Button btnOpslaan = new Button("Opslaan");
         btnOpslaan.setPrefSize(175, 35);
         btnOpslaan.setOnAction(e->{
-            if (Name.getValue() == null || Name2.getValue() == null || Name3.getText().isEmpty() || Name4.getText().isEmpty() || Name5.getText().isEmpty() || Name6.getText().isEmpty()) {
+            if (Name.getValue() == null || Name2.getValue() == null ||  Name3.getValue() == null || Name4.getValue() == null || Name5.getText().isEmpty() || Name6.getText().isEmpty() || Name7.getText().isEmpty() || Name8.getText().isEmpty()) {
                 System.out.println("een of meerdere velden zijn niet correct ingevlud");
 
                 //  alert wanneer velden leeg zijn
@@ -214,13 +190,14 @@ public class Invullen {
                     Name2.setStyle("-fx-border-color: black");
                 }
 
-                if (Name3.getText().isEmpty()) {
+
+                if (Name3.getValue() == null) {
                     Name3.setStyle("-fx-border-color: red");
                 }else {
                     Name3.setStyle("-fx-border-color: black");
                 }
 
-                if (Name4.getText().isEmpty()) {
+                if (Name4.getValue() == null) {
                     Name4.setStyle("-fx-border-color: red");
                 }else {
                     Name4.setStyle("-fx-border-color: black");
@@ -235,20 +212,34 @@ public class Invullen {
                     Name6.setStyle("-fx-border-color: red");
                 }else {
                     Name6.setStyle("-fx-border-color: black");
+                }
+                if (Name7.getText().isEmpty()) {
+                    Name7.setStyle("-fx-border-color: red");
+                }else {
+                    Name7.setStyle("-fx-border-color: black");
+                }
+                if (Name8.getText().isEmpty()) {
+                    Name8.setStyle("-fx-border-color: red");
+                }else {
+                    Name8.setStyle("-fx-border-color: black");
                 }}
 
             //ingevoerde data ophalen van de combobox
             String type = Name.getValue().toString();
             //ingevoerde data ophalen van de combobox
             String naam = Name2.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String Ability = Name3.getValue().toString();
+            //ingevoerde data ophalen van de combobox
+            String movespeed = Name4.getValue().toString();
             //ingevoerde data ophalen van de textfield kills
-            String kills = Name3.getText();
+            String kills = Name5.getText();
             //ingevoerde data ophalen van de textfield deaths
-            String deaths = Name4.getText();
-            //ingevoerde data ophalen van de textfield wins
-            String wins = Name5.getText();
-            //ingevoerde data ophalen van de textfield losses
-            String losses = Name6.getText();
+            String deaths = Name6.getText();
+             //ingevoerde data ophalen van de textfield wins
+            String wins = Name7.getText();
+             //ingevoerde data ophalen van de textfield losses
+            String losses = Name8.getText();
 
 
 
@@ -275,7 +266,9 @@ public class Invullen {
         Inputs.add(Name5, 1, 2);
         Inputs.add(Name6, 2, 2);
         Inputs.add(Name7, 1, 3);
-        Inputs.add(btnOpslaan, 2, 3);
+        Inputs.add(Name8,2,3);
+        Inputs.add(Name9,1,4);
+        Inputs.add(btnOpslaan, 2, 4);
 
         HBox hbox = new HBox();
 
@@ -306,6 +299,8 @@ public class Invullen {
         Weapon weapon = new Weapon();
         System.out.println("Switched to the new page");
     }
+
+
 }
 
 
