@@ -58,14 +58,14 @@ public class Home {
     menu1.setId("menu1");
     menu1.setStyle("");
     menu1.setOnAction(e->{
-        switchToNewPage2();
+        Invullen inv = new Invullen();
     });
 
 
     Button menu2 = new Button("Statistieken Bekijken");
     menu2.setId("menu2");
         menu2.setOnAction(e->{
-            switchToNewPage3();
+            Inzien inzien = new Inzien();
         });
 
 
@@ -90,13 +90,15 @@ public class Home {
        square.setId("box");
        square.setPrefSize(450,250);
        square.setOnMouseClicked(e->{
-           switchToNewPage2();
+           Invullen inv = new Invullen();
        });
 
        Pane square2 = new Pane();
         square2.setId("box2");
         square2.setPrefSize(450,250);
-
+        square2.setOnMouseClicked(e->{
+            Inzien inzien = new Inzien();
+        });
 
         squares.add(square,1,0);
         squares.add(square2,2,0);
@@ -121,14 +123,6 @@ public class Home {
 
 
 
-    private void switchToNewPage2() {
-        Invullen invullen = new Invullen();
-        System.out.println("Switched to the new page");
-    }
 
-    private void switchToNewPage3() {
-        Inzien inzien = new Inzien();
-        System.out.println("Switched to the new page");
-    }
 
 }

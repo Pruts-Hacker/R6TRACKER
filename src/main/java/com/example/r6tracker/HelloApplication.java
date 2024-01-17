@@ -1,6 +1,8 @@
 package com.example.r6tracker;
 
 import com.example.r6tracker.Screens.Home;
+import com.example.r6tracker.Screens.Invullen;
+import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.SpelerController;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -98,7 +100,7 @@ public class HelloApplication extends Application {
         rank.getItems().add("Daimond 1");
         rank.getItems().add("Champion");
 
-
+        Database db = new Database();
 
         Button btnLogIn = new Button("Opslaan");
         btnLogIn.setId("knop");
@@ -142,7 +144,7 @@ public class HelloApplication extends Application {
                 }}
 
             //ingevoerde data ophalen van de combobox
-            String ranking = rank.getValue().toString();
+            String ranking = (String) rank.getValue();
             //ingevoerde data ophalen van de textfield Naam
             String name = Naam.getText();
             //ingevoerde data ophalen van de textfield gamertag
@@ -160,10 +162,10 @@ public class HelloApplication extends Application {
 
 
 
-//            db.opslaanKlant(KlantNummer, Voornaam, Achternaam, voorschotDouble);
+            db.opslaanSpeler(name, tag, levels, ranking);
 
 
-            switchToNewPage();
+           Home home = new Home();
 
         });
         inlog.add(Naam,1,0);
@@ -188,16 +190,5 @@ public class HelloApplication extends Application {
         launch();
     }
 
-
-
-    private boolean isValidCredentials(String username, String password) {
-        // Replace this with your own validation logic
-        return username.equals("admin") && password.equals("admin");
-    }
-
-    private void switchToNewPage() {
-        Home home = new Home();
-        System.out.println("Switched to the new page");
-    }
 }
 

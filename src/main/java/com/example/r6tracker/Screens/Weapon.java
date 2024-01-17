@@ -1,5 +1,6 @@
 package com.example.r6tracker.Screens;
 
+import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.WeaponResultController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
@@ -253,6 +254,7 @@ public class Weapon {
         Name5.getItems().add("36");
         Name5.getItems().add("35");
 
+        Database db = new Database();
         WeaponResultController wrc = new WeaponResultController();
 
         Button btnOpslaan = new Button("Opslaan");
@@ -304,24 +306,28 @@ public class Weapon {
             String naam = Name1.getValue().toString();
             //ingevoerde data ophalen van de combobox
             String damage = Name2.getValue().toString();
+            int dmg = Integer.parseInt(damage);
             //ingevoerde data ophalen van de combobox
             String capacity = Name3.getValue().toString();
+            int cpy = Integer.parseInt(capacity);
             //ingevoerde data ophalen van de combobox
             String firerate = Name4.getValue().toString();
+            int fr = Integer.parseInt(firerate);
             //ingevoerde data ophalen van de combobox
             String mobility = Name5.getValue().toString();
+            int mby = Integer.parseInt(mobility);
 
 
 
 
 
             //  gegevens opslaan in array
-            wrc.addWeaponResult(naam, damage, capacity, firerate, mobility);
+            wrc.addWeaponResult(naam, dmg, cpy, fr, mby);
 
 
 
-//            db.opslaanKlant(KlantNummer, Voornaam, Achternaam, voorschotDouble);
-
+            db.opslaanWeapon(naam, dmg, cpy, fr, mby);
+            stage5.close();
 
 
 

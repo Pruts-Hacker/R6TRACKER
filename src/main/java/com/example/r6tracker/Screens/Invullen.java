@@ -1,6 +1,8 @@
 package com.example.r6tracker.Screens;
 
+import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.MatchResultController;
+import com.example.r6tracker.classes.OpperatorController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -49,14 +51,14 @@ public class Invullen {
         menu1.setId("menu1");
         menu1.setStyle("");
         menu1.setOnAction(e -> {
-            switchToNewPage2();
+            Invullen inv = new Invullen();
         });
 
 
         Button menu2 = new Button("Statistieken Bekijken");
         menu2.setId("menu2");
         menu2.setOnAction(e -> {
-            switchToNewPage3();
+            Inzien inz = new Inzien();
         });
 
 
@@ -160,10 +162,12 @@ public class Invullen {
         Name9.setPrefSize(175, 35);
 
         Name9.setOnAction(e->{
-            switchToNewPage4();
+            Weapon weapon = new Weapon();
         });
 
+        Database db = new Database();
         MatchResultController mrc = new MatchResultController();
+        OpperatorController oc = new OpperatorController();
 
         Button btnOpslaan = new Button("Opslaan");
         btnOpslaan.setPrefSize(175, 35);
@@ -232,14 +236,24 @@ public class Invullen {
             String Ability = Name3.getValue().toString();
             //ingevoerde data ophalen van de combobox
             String movespeed = Name4.getValue().toString();
+            //combobox omzetten van string naar int
+            int moveSpeed = Integer.parseInt(movespeed);
             //ingevoerde data ophalen van de textfield kills
             String kills = Name5.getText();
+            //textfield omzetten van string naar int
+            int Kills = Integer.parseInt(kills);
             //ingevoerde data ophalen van de textfield deaths
             String deaths = Name6.getText();
+            //textfield omzetten van string naar int
+            int Deaths = Integer.parseInt(deaths);
              //ingevoerde data ophalen van de textfield wins
             String wins = Name7.getText();
+            //textfield omzetten van string naar int
+            int Wins = Integer.parseInt(wins);
              //ingevoerde data ophalen van de textfield losses
             String losses = Name8.getText();
+            //textfield omzetten van string naar int
+            int Losses = Integer.parseInt(losses);
 
 
 
@@ -248,10 +262,11 @@ public class Invullen {
 
             //  gegevens opslaan in array
             mrc.addMatchResult(kills, deaths, wins, losses);
+            oc.addOpperator(naam, type, Ability, moveSpeed);
 
 
-
-//            db.opslaanKlant(KlantNummer, Voornaam, Achternaam, voorschotDouble);
+            db.opslaanOpperator(naam, type, Ability, moveSpeed);
+            db.opslaanMatchresult(Kills, Deaths, Wins, Losses);
 
 
 
@@ -285,20 +300,7 @@ public class Invullen {
     }
 
 
-    private void switchToNewPage2() {
-        Invullen invullen = new Invullen();
-        System.out.println("Switched to the new page");
-    }
 
-    private void switchToNewPage3() {
-        Inzien inzien = new Inzien();
-        System.out.println("Switched to the new page");
-    }
-
-    private void switchToNewPage4() {
-        Weapon weapon = new Weapon();
-        System.out.println("Switched to the new page");
-    }
 
 
 }

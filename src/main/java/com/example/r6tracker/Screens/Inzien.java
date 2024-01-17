@@ -46,14 +46,14 @@ public class Inzien {
         menu1.setId("menu1");
         menu1.setStyle("");
         menu1.setOnAction(e -> {
-            switchToNewPage2();
+            Invullen inv = new Invullen();
         });
 
 
         Button menu2 = new Button("Statistieken Bekijken");
         menu2.setId("menu2");
         menu2.setOnAction(e -> {
-            switchToNewPage3();
+            Inzien inz = new Inzien();
         });
 
 
@@ -83,15 +83,7 @@ public class Inzien {
     }
 
 
-    private void switchToNewPage2() {
-        Invullen invullen = new Invullen();
-        System.out.println("Switched to the new page");
-    }
 
-    private void switchToNewPage3() {
-        Inzien inzien = new Inzien();
-        System.out.println("Switched to the new page");
-    }
 }
 
 

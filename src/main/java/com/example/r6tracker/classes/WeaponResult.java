@@ -2,10 +2,10 @@ package com.example.r6tracker.classes;
 
 public class WeaponResult {
     private String naam;
-    private String damage;
-    private String capacity;
-    private String firerate;
-    private String mobility;
+    private int damage;
+    private int capacity;
+    private int firerate;
+    private int mobility;
 
     public String getNaam() {
         return naam;
@@ -15,39 +15,39 @@ public class WeaponResult {
         this.naam = naam;
     }
 
-    public String getDamage() {
+    public int getDamage() {
         return damage;
     }
 
-    public void setDamage(String damage) {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public String getFirerate() {
+    public int getFirerate() {
         return firerate;
     }
 
-    public void setFirerate(String firerate) {
+    public void setFirerate(int firerate) {
         this.firerate = firerate;
     }
 
-    public String getMobility() {
+    public int getMobility() {
         return mobility;
     }
 
-    public void setMobility(String mobility) {
+    public void setMobility(int mobility) {
         this.mobility = mobility;
     }
 
-    public WeaponResult(String naam, String damage, String capacity, String firerate, String mobility) {
+    public WeaponResult(String naam, int damage, int capacity, int firerate, int mobility) {
         this.naam = naam;
         this.damage = damage;
         this.capacity = capacity;
