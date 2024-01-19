@@ -6,6 +6,9 @@ public class Speler {
     private int level;
     private String rank;
 
+
+
+
     public String getNaam() {
         return naam;
     }

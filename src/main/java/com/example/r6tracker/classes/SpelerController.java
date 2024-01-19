@@ -14,4 +14,7 @@ public class SpelerController {
     spelers.add(speler);
 
     }
+
+
+
 }

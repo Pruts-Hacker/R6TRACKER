@@ -326,7 +326,7 @@ public class Weapon {
 
 
 
-            db.opslaanWeapon(naam, dmg, cpy, fr, mby);
+            db.opslaanWeapon(naam, dmg, cpy, fr, mby, db.geefMaxOpperatorID());
             stage5.close();
 
 

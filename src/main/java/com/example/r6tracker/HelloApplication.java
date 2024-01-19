@@ -4,6 +4,7 @@ import com.example.r6tracker.Screens.Home;
 import com.example.r6tracker.Screens.Invullen;
 import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.SpelerController;
+import com.example.r6tracker.classes.SpelerIdOpslaanController;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -107,8 +108,10 @@ public class HelloApplication extends Application {
         btnLogIn.setAlignment(Pos.CENTER);
 
         SpelerController sc = new SpelerController();
+        SpelerIdOpslaanController sio = new SpelerIdOpslaanController();
 
         btnLogIn.setOnAction(e -> {
+
 
             if (rank.getValue() == null || Naam.getText().isEmpty() || gamertag.getText().isEmpty() || level.getText().isEmpty()) {
                 System.out.println("een of meerdere velden zijn niet correct ingevlud");
@@ -159,10 +162,11 @@ public class HelloApplication extends Application {
 
             //  gegevens opslaan in array
             sc.addSpeler(ranking, name, tag, levels);
-
+            sio.addId(db.geefMaxPlayerID());
 
 
             db.opslaanSpeler(name, tag, levels, ranking);
+            System.out.println("Aangemaakt playerid = " + db.geefMaxPlayerID());
 
 
            Home home = new Home();

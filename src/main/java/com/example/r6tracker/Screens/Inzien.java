@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -65,6 +66,22 @@ public class Inzien {
         leftPane.setPrefSize(150, 550);
         leftPane.add(menu1, 1, 0);
         leftPane.add(menu2, 1, 1);
+
+        TableView tv1 = new TableView<>();
+        tv1.setId("spelerTV");
+        TableView tv2 = new TableView<>();
+        tv2.setId("opperatorTV");
+        TableView tv3 = new TableView<>();
+        tv3.setId("matchresultTV");
+        TableView tv4 = new TableView<>();
+        tv4.setId("weaponresultTV");
+        GridPane allTV = new GridPane();
+
+        allTV.add(tv1,1,0);
+        allTV.add(tv2,2,0);
+        allTV.add(tv3,1,1);
+        allTV.add(tv4,2,1);
+
 
         HBox hbox = new HBox();
 

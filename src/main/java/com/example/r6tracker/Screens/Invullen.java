@@ -3,6 +3,7 @@ package com.example.r6tracker.Screens;
 import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.MatchResultController;
 import com.example.r6tracker.classes.OpperatorController;
+import com.example.r6tracker.classes.OpperatorIdOpslaanController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -166,6 +167,7 @@ public class Invullen {
         });
 
         Database db = new Database();
+        OpperatorIdOpslaanController oio = new OpperatorIdOpslaanController();
         MatchResultController mrc = new MatchResultController();
         OpperatorController oc = new OpperatorController();
 
@@ -265,8 +267,10 @@ public class Invullen {
             oc.addOpperator(naam, type, Ability, moveSpeed);
 
 
-            db.opslaanOpperator(naam, type, Ability, moveSpeed);
-            db.opslaanMatchresult(Kills, Deaths, Wins, Losses);
+            db.opslaanOpperator(naam, type, Ability, moveSpeed, db.geefMaxPlayerID());
+            oio.addId(db.geefMaxOpperatorID());
+            db.opslaanMatchresult(Kills, Deaths, Wins, Losses, db.geefMaxPlayerID());
+            System.out.println("Aangemaakt opperatorid = " + db.geefMaxOpperatorID());
 
 
 
