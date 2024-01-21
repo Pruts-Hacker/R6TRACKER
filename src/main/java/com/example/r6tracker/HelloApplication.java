@@ -161,7 +161,7 @@ public class HelloApplication extends Application {
 
 
             //  gegevens opslaan in array
-            sc.addSpeler(ranking, name, tag, levels);
+            sc.addSpeler(db.geefSpelerId(), ranking, name, tag, levels);
             sio.addId(db.geefMaxPlayerID());
 
 

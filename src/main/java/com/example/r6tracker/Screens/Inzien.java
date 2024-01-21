@@ -1,20 +1,28 @@
 package com.example.r6tracker.Screens;
 
+import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.Speler;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
 public class Inzien {
 
     public Inzien(){
+
+
+
         Stage stage4 = new Stage();
         GridPane root = new GridPane();
         root.setId("Root");
@@ -67,8 +75,29 @@ public class Inzien {
         leftPane.add(menu1, 1, 0);
         leftPane.add(menu2, 1, 1);
 
+        Database db = new Database();
+
         TableView tv1 = new TableView<>();
         tv1.setId("spelerTV");
+
+        TableColumn<Speler, Integer> col1 = new TableColumn<>("Speler_id");
+        col1.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<Speler, String> col2 = new TableColumn<>("Naam");
+        col2.setCellValueFactory(new PropertyValueFactory<>("naam"));
+
+        TableColumn<Speler, String> col3 = new TableColumn<>("Gamertag");
+        col3.setCellValueFactory(new PropertyValueFactory<>("gamertag"));
+
+        TableColumn<Speler, Integer> col4 = new TableColumn<>("Level");
+        col4.setCellValueFactory(new PropertyValueFactory<>("level"));
+
+        TableColumn<Speler, String> col5 = new TableColumn<>("Rank");
+        col5.setCellValueFactory(new PropertyValueFactory<>("rank"));
+
+        tv1.getColumns().addAll(col1, col2, col3, col4, col5);
+        tv1.getItems().setAll(db.geefSpeler());
+
         TableView tv2 = new TableView<>();
         tv2.setId("opperatorTV");
         TableView tv3 = new TableView<>();
@@ -76,6 +105,8 @@ public class Inzien {
         TableView tv4 = new TableView<>();
         tv4.setId("weaponresultTV");
         GridPane allTV = new GridPane();
+
+
 
         allTV.add(tv1,1,0);
         allTV.add(tv2,2,0);
@@ -86,7 +117,7 @@ public class Inzien {
         HBox hbox = new HBox();
 
 
-        hbox.getChildren().addAll(leftPane);
+        hbox.getChildren().addAll(leftPane, allTV);
         root.add(topPane, 1, 0);
         root.add(hbox, 1, 1);
 

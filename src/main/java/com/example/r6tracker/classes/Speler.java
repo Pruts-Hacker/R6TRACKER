@@ -5,9 +5,16 @@ public class Speler {
     private String gamertag;
     private int level;
     private String rank;
+    private int id;
 
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNaam() {
         return naam;
@@ -41,11 +48,13 @@ public class Speler {
         this.rank = rank;
     }
 
-    public Speler(String rank, String naam, String gamertag, int level) {
+    public Speler(int id, String rank, String naam, String gamertag, int level) {
+        this.id = id;
+        this.rank = rank;
         this.naam = naam;
         this.gamertag = gamertag;
         this.level = level;
-        this.rank = rank;
+
 
 
 

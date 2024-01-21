@@ -1,10 +1,16 @@
 package com.example.r6tracker.classes;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Database {
 
     private Connection conn;
+
+    private ArrayList<Speler> spelerlijst = new ArrayList<>();
+    private ArrayList<Opperator> opperatorlijst = new ArrayList<>();
+    private ArrayList<MatchResult> matchresultlijst = new ArrayList<>();
+    private ArrayList<WeaponResult> weaponlijst = new ArrayList<>();
 //Database connectie leggen
     public Database() {
         try {
@@ -34,6 +40,24 @@ public class Database {
         return id;
         }
 
+        public int geefSpelerId(){
+            String SidOpslaan = "SELECT speler_id as id FROM speler";
+            int id = 0;
+            try {
+                Statement stm = this.conn.createStatement();
+                ResultSet rs = stm.executeQuery(SidOpslaan);
+
+                if(rs.next()){
+                    id = rs.getInt("id");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return id;
+        }
+
+
+
     public int geefMaxOpperatorID(){
         String OidOpslaan = "SELECT MAX(opperator_id) as op_id FROM opperator";
         int id = 0;
@@ -60,6 +84,32 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Speler> geefSpeler() {
+        ArrayList<Speler> lijst = new ArrayList<>();
+        String sQuery = "SELECT * FROM speler";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+            ResultSet rs = stm.getResultSet();
+
+            while (rs.next()) {
+                int Ispelerid = rs.getInt("speler_id");
+                String Snaam = rs.getString("naam");
+                String Sgamertag = rs.getString("gamertag");
+                int Ilevel = rs.getInt("level");
+                String Srank = rs.getString("rank");
+
+                Speler speler = new Speler(Ispelerid, Srank, Snaam, Sgamertag, Ilevel);
+                lijst.add(speler);
+
+                System.out.println(Ispelerid + " " + Snaam + " " + Sgamertag + " " + Ilevel + " " + Srank);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lijst;
     }
     public void opslaanOpperator(String naam, String type, String ability, int movespeed, int i){
         try {

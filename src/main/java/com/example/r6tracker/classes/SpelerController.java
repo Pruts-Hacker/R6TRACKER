@@ -9,8 +9,8 @@ public class SpelerController {
     public SpelerController() {spelers = new ArrayList<>();
     }
 
-    public void addSpeler(String ranking, String name, String gamertag, int level){
-    speler = new Speler(ranking, name, gamertag, level);
+    public void addSpeler(int i, String ranking, String name, String gamertag, int level){
+    speler = new Speler(i, ranking, name, gamertag, level);
     spelers.add(speler);
 
     }
