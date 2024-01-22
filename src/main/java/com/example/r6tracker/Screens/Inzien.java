@@ -1,6 +1,8 @@
 package com.example.r6tracker.Screens;
 
 import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.MatchResult;
+import com.example.r6tracker.classes.Opperator;
 import com.example.r6tracker.classes.Speler;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
@@ -76,6 +78,7 @@ public class Inzien {
         leftPane.add(menu2, 1, 1);
 
         Database db = new Database();
+        //---------------------------------------------------------------------Speler table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TableView tv1 = new TableView<>();
         tv1.setId("spelerTV");
@@ -98,13 +101,91 @@ public class Inzien {
         tv1.getColumns().addAll(col1, col2, col3, col4, col5);
         tv1.getItems().setAll(db.geefSpeler());
 
+        //---------------------------------------------------------------------Opperator table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
         TableView tv2 = new TableView<>();
         tv2.setId("opperatorTV");
+
+        TableColumn<Opperator, Integer> col6 = new TableColumn<>("Opperator_id");
+        col6.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<Opperator, String> col7 = new TableColumn<>("Naam");
+        col7.setCellValueFactory(new PropertyValueFactory<>("naam"));
+
+        TableColumn<Opperator, String> col8 = new TableColumn<>("Type");
+        col8.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        TableColumn<Opperator, String> col9 = new TableColumn<>("Ability");
+        col9.setCellValueFactory(new PropertyValueFactory<>("ability"));
+
+        TableColumn<Opperator, Integer> col10 = new TableColumn<>("Move_speed");
+        col10.setCellValueFactory(new PropertyValueFactory<>("movespeed"));
+
+        TableColumn<Opperator, Integer> col11 = new TableColumn<>("Speler_id");
+        col11.setCellValueFactory(new PropertyValueFactory<>("oppsid"));
+
+        tv2.getColumns().addAll(col6, col7, col8, col9, col10, col11);
+        tv2.getItems().addAll(db.geefOpperator());
+
+
+        //---------------------------------------------------------------------MatchResult table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         TableView tv3 = new TableView<>();
         tv3.setId("matchresultTV");
+
+        TableColumn<MatchResult, Integer> col12 = new TableColumn<>("Match_id");
+        col12.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<MatchResult, Integer> col13 = new TableColumn<>("Kills");
+        col13.setCellValueFactory(new PropertyValueFactory<>("kills"));
+
+        TableColumn<MatchResult, Integer> col14 = new TableColumn<>("Deaths");
+        col14.setCellValueFactory(new PropertyValueFactory<>("deaths"));
+
+        TableColumn<MatchResult, Integer> col15 = new TableColumn<>("Wins");
+        col15.setCellValueFactory(new PropertyValueFactory<>("wins"));
+
+        TableColumn<MatchResult, Integer> col16 = new TableColumn<>("Losses");
+        col16.setCellValueFactory(new PropertyValueFactory<>("losses"));
+
+        TableColumn<MatchResult, Integer> col17 = new TableColumn<>("Speler_id");
+        col17.setCellValueFactory(new PropertyValueFactory<>("msid"));
+
+        tv3.getColumns().addAll(col12, col13, col14, col15, col16, col17);
+        tv3.getItems().addAll(db.geefMatchResult());
+
+
+        //---------------------------------------------------------------------Weapon table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         TableView tv4 = new TableView<>();
         tv4.setId("weaponresultTV");
+
+        TableColumn<MatchResult, Integer> col18 = new TableColumn<>("Match_id");
+        col12.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<MatchResult, Integer> col19 = new TableColumn<>("Kills");
+        col13.setCellValueFactory(new PropertyValueFactory<>("kills"));
+
+        TableColumn<MatchResult, Integer> col20 = new TableColumn<>("Deaths");
+        col14.setCellValueFactory(new PropertyValueFactory<>("deaths"));
+
+        TableColumn<MatchResult, Integer> col21 = new TableColumn<>("Wins");
+        col15.setCellValueFactory(new PropertyValueFactory<>("wins"));
+
+        TableColumn<MatchResult, Integer> col22 = new TableColumn<>("Losses");
+        col16.setCellValueFactory(new PropertyValueFactory<>("losses"));
+
+        TableColumn<MatchResult, Integer> col23 = new TableColumn<>("Speler_id");
+        col17.setCellValueFactory(new PropertyValueFactory<>("msid"));
+
+        tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23);
+        tv4.getItems().addAll(db.geefWeaponResult());
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         GridPane allTV = new GridPane();
+        allTV.setHgap(15);
+        allTV.setVgap(15);
+        allTV.setPadding(new Insets(0,0,0,25));
 
 
 

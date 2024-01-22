@@ -1,5 +1,7 @@
 package com.example.r6tracker.classes;
 
+import javafx.css.Match;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -7,10 +9,7 @@ public class Database {
 
     private Connection conn;
 
-    private ArrayList<Speler> spelerlijst = new ArrayList<>();
-    private ArrayList<Opperator> opperatorlijst = new ArrayList<>();
-    private ArrayList<MatchResult> matchresultlijst = new ArrayList<>();
-    private ArrayList<WeaponResult> weaponlijst = new ArrayList<>();
+
 //Database connectie leggen
     public Database() {
         try {
@@ -21,6 +20,7 @@ public class Database {
         }
 
 
+        //-------------------------------------------------------------- Alle Speler database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         }
 
@@ -58,21 +58,7 @@ public class Database {
 
 
 
-    public int geefMaxOpperatorID(){
-        String OidOpslaan = "SELECT MAX(opperator_id) as op_id FROM opperator";
-        int id = 0;
-        try {
-            Statement stm = this.conn.createStatement();
-            ResultSet rs = stm.executeQuery(OidOpslaan);
 
-            if(rs.next()){
-                id = rs.getInt("op_id");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return id;
-    }
 
     public void opslaanSpeler(String naam, String gamertag, int level, String rank) {
         try {
@@ -111,6 +97,58 @@ public class Database {
         }
         return lijst;
     }
+
+
+    //-------------------------------------------------------------- Alle Opperator database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    public int geefMaxOpperatorID(){
+        String OidOpslaan = "SELECT MAX(opperator_id) as op_id FROM opperator";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(OidOpslaan);
+
+            if(rs.next()){
+                id = rs.getInt("op_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefOpperatorId(){
+        String oppid = "SELECT opperator_id as id FROM opperator";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(oppid);
+
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefOppSpelerId(){
+        String oppsid = "SELECT speler_id as id FROM opperator";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(oppsid);
+
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+
     public void opslaanOpperator(String naam, String type, String ability, int movespeed, int i){
         try {
             Statement stm = this.conn.createStatement();
@@ -121,6 +159,83 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Opperator> geefOpperator() {
+        ArrayList<Opperator> lijst = new ArrayList<>();
+        String sQuery = "SELECT * FROM opperator";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+            ResultSet rs = stm.getResultSet();
+
+            while (rs.next()) {
+                int Iopperatorid = rs.getInt("opperator_id");
+                String Snaam = rs.getString("naam");
+                String Stype = rs.getString("type");
+                String Iability = rs.getString("ability");
+                int Imovespeed = rs.getInt("move_speed");
+                int Ispelerid = rs.getInt("speler_id");
+
+                Opperator opp = new Opperator(Iopperatorid, Stype, Snaam, Iability, Imovespeed, Ispelerid);
+                lijst.add(opp);
+
+                System.out.println(Iopperatorid + " " + Stype + " " + Snaam + " " + Iability + " " + Imovespeed + " " + Ispelerid);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lijst;
+    }
+
+    //-------------------------------------------------------------- Alle MatchResult database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public int geefMaxMatchID(){
+        String MidOpslaan = "SELECT MAX(match_id) as m_id FROM matchresult";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(MidOpslaan);
+
+            if(rs.next()){
+                id = rs.getInt("m_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefMatchId(){
+        String matchId = "SELECT match_id as id FROM matchresult";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(matchId);
+
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefMatchSpelerId(){
+        String matchsid = "SELECT speler_id as ms_id FROM matchresult";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(matchsid);
+
+            if(rs.next()){
+                id = rs.getInt("ms_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
     }
 
     public void opslaanMatchresult(int kills, int deaths, int wins, int losses, int i){
@@ -135,6 +250,83 @@ public class Database {
         }
     }
 
+    public ArrayList<MatchResult> geefMatchResult() {
+        ArrayList<MatchResult> lijst = new ArrayList<>();
+        String sQuery = "SELECT * FROM matchresult";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+            ResultSet rs = stm.getResultSet();
+
+            while (rs.next()) {
+                int Imatchid = rs.getInt("match_id");
+                int Ikills = rs.getInt("kills");
+                int Ideaths = rs.getInt("deaths");
+                int Iwins = rs.getInt("wins");
+                int Ilosses = rs.getInt("losses");
+                int Ispelerid = rs.getInt("speler_id");
+
+                MatchResult match = new MatchResult(Imatchid, Ikills, Ideaths, Iwins, Ilosses, Ispelerid);
+                lijst.add(match);
+
+                System.out.println(Imatchid + " " + Ikills + " " + Ideaths + " " + Iwins + " " + Ilosses + " " + Ispelerid);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lijst;
+    }
+
+    //-------------------------------------------------------------- Alle Weapon database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public int geefMaxWeaponID(){
+        String MidOpslaan = "SELECT MAX(match_id) as m_id FROM matchresult";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(MidOpslaan);
+
+            if(rs.next()){
+                id = rs.getInt("m_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefWeaponId(){
+        String weaponid = "SELECT weapon_id as id FROM weapon";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(weaponid);
+
+            if(rs.next()){
+                id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public int geefWeaponOpperatorId(){
+        String matchsid = "SELECT opperator_id as wo_id FROM weapon";
+        int id = 0;
+        try {
+            Statement stm = this.conn.createStatement();
+            ResultSet rs = stm.executeQuery(matchsid);
+
+            if(rs.next()){
+                id = rs.getInt("ms_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
     public void opslaanWeapon(String naam, int dmg, int cpy, int fr, int mby, int i){
         try {
             Statement stm = this.conn.createStatement();
@@ -146,4 +338,31 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-}
+
+
+    public ArrayList<WeaponResult> geefWeaponResult() {
+        ArrayList<WeaponResult> lijst = new ArrayList<>();
+        String sQuery = "SELECT * FROM matchresult";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+            ResultSet rs = stm.getResultSet();
+
+            while (rs.next()) {
+                int Imatchid = rs.getInt("match_id");
+                int Ikills = rs.getInt("kills");
+                int Ideaths = rs.getInt("deaths");
+                int Iwins = rs.getInt("wins");
+                int Ilosses = rs.getInt("losses");
+                int Ispelerid = rs.getInt("speler_id");
+
+                MatchResult match = new MatchResult(Imatchid, Ikills, Ideaths, Iwins, Ilosses, Ispelerid);
+                lijst.add(match);
+
+                System.out.println(Imatchid + " " + Ikills + " " + Ideaths + " " + Iwins + " " + Ilosses + " " + Ispelerid);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lijst;
+    }

@@ -9,8 +9,8 @@ public class OpperatorController {
 
     public OpperatorController(){opp = new ArrayList<>();}
 
-    public void addOpperator(String naam, String type, String ability, int movespeed){
-        opperator = new Opperator(naam, type, ability, movespeed);
+    public void addOpperator(int i, String naam, String type, String ability, int movespeed, int geefOppSpelerId){
+        opperator = new Opperator(i, naam, type, ability, movespeed, geefOppSpelerId);
         opp.add(opperator);
     }
 }

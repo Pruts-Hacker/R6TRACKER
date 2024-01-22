@@ -1,6 +1,5 @@
 package com.example.r6tracker.classes;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MatchResultController {
@@ -10,8 +9,8 @@ public class MatchResultController {
 
     public MatchResultController(){mr = new ArrayList<>();}
 
-    public void addMatchResult(String kills, String deaths, String wins, String losses){
-        matchr = new MatchResult(kills, deaths, wins, losses);
+    public void addMatchResult(int i, int kills, int deaths, int wins, int losses, int geefMatchSpelerId){
+        matchr = new MatchResult(i, kills, deaths, wins, losses, geefMatchSpelerId);
         mr.add(matchr);
 
     }

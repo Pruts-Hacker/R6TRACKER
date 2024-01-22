@@ -5,6 +5,24 @@ private String type;
 private String naam;
 private String ability;
 private int movespeed;
+private int oppsid;
+private int id;
+
+    public int getOppsid() {
+        return oppsid;
+    }
+
+    public void setOppsid(int oppsid) {
+        this.oppsid = oppsid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -38,7 +56,9 @@ private int movespeed;
         this.movespeed = movespeed;
     }
 
-    public Opperator(String type, String naam, String ability, int movespeed) {
+    public Opperator(int id, String type, String naam, String ability, int movespeed, int oppsid) {
+        this.oppsid = oppsid;
+        this.id = id;
         this.type = type;
         this.naam = naam;
         this.ability = ability;

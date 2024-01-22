@@ -263,14 +263,15 @@ public class Invullen {
 
 
             //  gegevens opslaan in array
-            mrc.addMatchResult(kills, deaths, wins, losses);
-            oc.addOpperator(naam, type, Ability, moveSpeed);
+            mrc.addMatchResult(db.geefMatchId(), Kills, Deaths, Wins, Losses, db.geefMatchSpelerId());
+            oc.addOpperator(db.geefOpperatorId(), naam, type, Ability, moveSpeed, db.geefOppSpelerId());
 
 
             db.opslaanOpperator(naam, type, Ability, moveSpeed, db.geefMaxPlayerID());
             oio.addId(db.geefMaxOpperatorID());
             db.opslaanMatchresult(Kills, Deaths, Wins, Losses, db.geefMaxPlayerID());
             System.out.println("Aangemaakt opperatorid = " + db.geefMaxOpperatorID());
+            System.out.println("Aangemaakt matchid = " + db.geefMaxMatchID());
 
 
 
