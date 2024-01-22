@@ -322,7 +322,7 @@ public class Weapon {
 
 
             //  gegevens opslaan in array
-            wrc.addWeaponResult(naam, dmg, cpy, fr, mby);
+            wrc.addWeaponResult(db.geefWeaponId(), naam, dmg, cpy, fr, mby, db.geefWeaponOpperatorId());
 
 
 

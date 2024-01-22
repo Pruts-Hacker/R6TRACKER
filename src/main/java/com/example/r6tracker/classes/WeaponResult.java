@@ -6,6 +6,24 @@ public class WeaponResult {
     private int capacity;
     private int firerate;
     private int mobility;
+    private int id;
+    private int oppid;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOppid() {
+        return oppid;
+    }
+
+    public void setOppid(int oppid) {
+        this.oppid = oppid;
+    }
 
     public String getNaam() {
         return naam;
@@ -47,11 +65,13 @@ public class WeaponResult {
         this.mobility = mobility;
     }
 
-    public WeaponResult(String naam, int damage, int capacity, int firerate, int mobility) {
+    public WeaponResult(int id, String naam, int damage, int capacity, int firerate, int mobility, int oppid) {
+        this.id = id;
         this.naam = naam;
         this.damage = damage;
         this.capacity = capacity;
         this.firerate = firerate;
         this.mobility = mobility;
+        this.oppid = oppid;
     }
 }

@@ -10,8 +10,8 @@ public class WeaponResultController {
 
     public WeaponResultController(){wr = new ArrayList<>();}
 
-    public void addWeaponResult(String name, int damage, int capacity, int firerate, int mobility){
-        weaponr = new WeaponResult(name, damage, capacity, firerate, mobility);
+    public void addWeaponResult(int i, String name, int damage, int capacity, int firerate, int mobility, int geefWeaponOpperatorId){
+        weaponr = new WeaponResult(i, name, damage, capacity, firerate, mobility, geefWeaponOpperatorId);
         wr.add(weaponr);
 
     }

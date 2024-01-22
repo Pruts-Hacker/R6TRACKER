@@ -1,9 +1,6 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
-import com.example.r6tracker.classes.MatchResult;
-import com.example.r6tracker.classes.Opperator;
-import com.example.r6tracker.classes.Speler;
+import com.example.r6tracker.classes.*;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -81,22 +78,27 @@ public class Inzien {
         //---------------------------------------------------------------------Speler table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TableView tv1 = new TableView<>();
-        tv1.setId("spelerTV");
+
 
         TableColumn<Speler, Integer> col1 = new TableColumn<>("Speler_id");
         col1.setCellValueFactory(new PropertyValueFactory<>("id"));
 
+
         TableColumn<Speler, String> col2 = new TableColumn<>("Naam");
         col2.setCellValueFactory(new PropertyValueFactory<>("naam"));
+
 
         TableColumn<Speler, String> col3 = new TableColumn<>("Gamertag");
         col3.setCellValueFactory(new PropertyValueFactory<>("gamertag"));
 
+
         TableColumn<Speler, Integer> col4 = new TableColumn<>("Level");
         col4.setCellValueFactory(new PropertyValueFactory<>("level"));
 
+
         TableColumn<Speler, String> col5 = new TableColumn<>("Rank");
         col5.setCellValueFactory(new PropertyValueFactory<>("rank"));
+
 
         tv1.getColumns().addAll(col1, col2, col3, col4, col5);
         tv1.getItems().setAll(db.geefSpeler());
@@ -105,7 +107,7 @@ public class Inzien {
 
 
         TableView tv2 = new TableView<>();
-        tv2.setId("opperatorTV");
+
 
         TableColumn<Opperator, Integer> col6 = new TableColumn<>("Opperator_id");
         col6.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -131,7 +133,7 @@ public class Inzien {
 
         //---------------------------------------------------------------------MatchResult table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         TableView tv3 = new TableView<>();
-        tv3.setId("matchresultTV");
+
 
         TableColumn<MatchResult, Integer> col12 = new TableColumn<>("Match_id");
         col12.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -158,34 +160,38 @@ public class Inzien {
         //---------------------------------------------------------------------Weapon table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TableView tv4 = new TableView<>();
-        tv4.setId("weaponresultTV");
 
-        TableColumn<MatchResult, Integer> col18 = new TableColumn<>("Match_id");
-        col12.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<MatchResult, Integer> col19 = new TableColumn<>("Kills");
-        col13.setCellValueFactory(new PropertyValueFactory<>("kills"));
+        TableColumn<WeaponResult, Integer> col18 = new TableColumn<>("Weapon_id");
+        col18.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<MatchResult, Integer> col20 = new TableColumn<>("Deaths");
-        col14.setCellValueFactory(new PropertyValueFactory<>("deaths"));
+        TableColumn<WeaponResult, String> col19 = new TableColumn<>("Naam");
+        col19.setCellValueFactory(new PropertyValueFactory<>("naam"));
 
-        TableColumn<MatchResult, Integer> col21 = new TableColumn<>("Wins");
-        col15.setCellValueFactory(new PropertyValueFactory<>("wins"));
+        TableColumn<WeaponResult, Integer> col20 = new TableColumn<>("Damage");
+        col20.setCellValueFactory(new PropertyValueFactory<>("damage"));
 
-        TableColumn<MatchResult, Integer> col22 = new TableColumn<>("Losses");
-        col16.setCellValueFactory(new PropertyValueFactory<>("losses"));
+        TableColumn<WeaponResult, Integer> col21 = new TableColumn<>("Capacity");
+        col21.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
-        TableColumn<MatchResult, Integer> col23 = new TableColumn<>("Speler_id");
-        col17.setCellValueFactory(new PropertyValueFactory<>("msid"));
+        TableColumn<WeaponResult, Integer> col22 = new TableColumn<>("Fire_rate");
+        col22.setCellValueFactory(new PropertyValueFactory<>("firerate"));
 
-        tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23);
+        TableColumn<WeaponResult, Integer> col23 = new TableColumn<>("Mobility");
+        col23.setCellValueFactory(new PropertyValueFactory<>("mobility"));
+
+        TableColumn<WeaponResult, Integer> col24 = new TableColumn<>("Opperator_id");
+        col24.setCellValueFactory(new PropertyValueFactory<>("oppid"));
+
+
+        tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23, col24);
         tv4.getItems().addAll(db.geefWeaponResult());
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         GridPane allTV = new GridPane();
         allTV.setHgap(15);
         allTV.setVgap(15);
-        allTV.setPadding(new Insets(0,0,0,25));
+        allTV.setPadding(new Insets(0,0,0,5));
 
 
 
