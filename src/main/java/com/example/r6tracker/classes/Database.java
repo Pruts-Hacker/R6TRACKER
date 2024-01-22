@@ -95,6 +95,29 @@ public class Database {
         return lijst;
     }
 
+    public void updateSpeler(Speler s){
+        String sQuery = "UPDATE speler SET  naam = '" +s.getNaam()+"', gamertag = '"+s.getGamertag()+"', level = '"+ s.getLevel()+"', rank = '"+ s.getRank();
+
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public void verwijderSpeler() {
+        String sQuery = "DELETE FROM speler";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     //-------------------------------------------------------------- Alle Opperator database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public int geefMaxOpperatorID() {
@@ -183,6 +206,16 @@ public class Database {
             throw new RuntimeException(e);
         }
         return lijst;
+    }
+
+    public void verwijderOpperator() {
+        String sQuery = "DELETE FROM opperator";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //-------------------------------------------------------------- Alle MatchResult database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,6 +307,16 @@ public class Database {
         return lijst;
     }
 
+    public void verwijderMatchResult() {
+        String sQuery = "DELETE FROM matchresult";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //-------------------------------------------------------------- Alle Weapon database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public int geefMaxWeaponID() {
@@ -363,5 +406,15 @@ public class Database {
             throw new RuntimeException(e);
         }
         return lijst;
+    }
+
+    public void verwijderWeapon() {
+        String sQuery = "DELETE FROM weapon";
+        try {
+            Statement stm = this.conn.createStatement();
+            stm.execute(sQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

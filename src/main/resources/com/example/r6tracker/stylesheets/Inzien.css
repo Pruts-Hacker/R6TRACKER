@@ -51,43 +51,43 @@
     -fx-background-color:  #222A31;
 }
 
-.table-view {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-table-menu-button-visible: false;
-    -fx-text-fill: #ffff;
-}
+/*.table-view {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-table-menu-button-visible: false;*/
+/*    -fx-text-fill: #ffff;*/
+/*}*/
 
-.table-cell {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-text-fill: #ffff;
+/*.table-cell {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-text-fill: #ffff;*/
 
-}
+/*}*/
 
-.table-row-cell {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-text-fill: #ffff;
+/*.table-row-cell {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-text-fill: #ffff;*/
 
-}
+/*}*/
 
-/* Remove headers from TableView */
+/*!* Remove headers from TableView *!*/
 
-.table-view .column-header-background {
-    -fx-background-color: transparent;
-    -fx-text-fill: #ffff;
+/*.table-view .column-header-background {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-fill: #ffff;*/
 
-}
+/*}*/
 
-.table-view .column-header-background .filler{
-    -fx-background-color: transparent;
+/*.table-view .column-header-background .filler{*/
+/*    -fx-background-color: transparent;*/
 
-}
+/*}*/
 
-.table-view .column-header {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-text-fill: #ffff;
+/*.table-view .column-header {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-text-fill: #ffff;*/
 
-}
+/*}*/

@@ -78,7 +78,8 @@ public class Inzien {
         //---------------------------------------------------------------------Speler table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TableView tv1 = new TableView<>();
-
+        tv1.setPrefWidth(425);
+        tv1.setPrefHeight(225);
 
         TableColumn<Speler, Integer> col1 = new TableColumn<>("Speler_id");
         col1.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -103,11 +104,18 @@ public class Inzien {
         tv1.getColumns().addAll(col1, col2, col3, col4, col5);
         tv1.getItems().setAll(db.geefSpeler());
 
+        //setonmouseclicked om gegevens te wijzigen
+        tv1.setOnMouseClicked(e->{
+            Speler s = (Speler) tv1.getSelectionModel().getSelectedItem();
+            modifyView mod = new modifyView(s);
+        });
+
         //---------------------------------------------------------------------Opperator table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
         TableView tv2 = new TableView<>();
-
+        tv2.setPrefWidth(425);
+        tv2.setPrefHeight(225);
 
         TableColumn<Opperator, Integer> col6 = new TableColumn<>("Opperator_id");
         col6.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -133,7 +141,8 @@ public class Inzien {
 
         //---------------------------------------------------------------------MatchResult table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         TableView tv3 = new TableView<>();
-
+        tv3.setPrefWidth(425);
+        tv3.setPrefHeight(225);
 
         TableColumn<MatchResult, Integer> col12 = new TableColumn<>("Match_id");
         col12.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -160,7 +169,8 @@ public class Inzien {
         //---------------------------------------------------------------------Weapon table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         TableView tv4 = new TableView<>();
-
+        tv4.setPrefWidth(425);
+        tv4.setPrefHeight(225);
 
         TableColumn<WeaponResult, Integer> col18 = new TableColumn<>("Weapon_id");
         col18.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -187,11 +197,27 @@ public class Inzien {
         tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23, col24);
         tv4.getItems().addAll(db.geefWeaponResult());
 
+
+        Button btnDelete = new Button("Delete");
+        btnDelete.setOnAction(e->{
+            db.verwijderSpeler();
+            db.verwijderOpperator();
+            db.verwijderMatchResult();
+            db.verwijderWeapon();
+
+            tv1.getItems().setAll(db.geefSpeler());
+            tv2.getItems().setAll(db.geefOpperator());
+            tv3.getItems().setAll(db.geefMatchResult());
+            tv4.getItems().setAll(db.geefWeaponResult());
+        });
+
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         GridPane allTV = new GridPane();
-        allTV.setHgap(15);
-        allTV.setVgap(15);
-        allTV.setPadding(new Insets(0,0,0,5));
+        allTV.setHgap(20);
+        allTV.setVgap(20);
+        allTV.setPadding(new Insets(10,0,0,60));
 
 
 
@@ -199,6 +225,7 @@ public class Inzien {
         allTV.add(tv2,2,0);
         allTV.add(tv3,1,1);
         allTV.add(tv4,2,1);
+        allTV.add(btnDelete,1,2);
 
 
         HBox hbox = new HBox();

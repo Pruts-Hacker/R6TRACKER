@@ -85,7 +85,7 @@
 }
 
 #box2{
-    -fx-background-image: url("../images/Screenshot_2024-01-10_234555.png");
+    -fx-background-image: url("../images/Screenshot_2024-01-22_133347.png");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 450px 235px;
     -fx-background-position: center center;
@@ -93,20 +93,3 @@
     -fx-border-color: #ffff;
 }
 
-#box3{
-    -fx-background-image: url("../images/Screenshot_2024-01-10_234555.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 450px 235px;
-    -fx-background-position: center center;
-    -fx-border-width: 2;
-    -fx-border-color: #ffff;
-}
-
-#box4{
-    -fx-background-image: url("../images/Screenshot_2024-01-10_234555.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 450px 235px;
-    -fx-background-position: center center;
-    -fx-border-width: 2;
-    -fx-border-color: #ffff;
-}
