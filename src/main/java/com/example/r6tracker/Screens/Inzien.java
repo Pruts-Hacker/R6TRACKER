@@ -138,6 +138,12 @@ public class Inzien {
         tv2.getColumns().addAll(col6, col7, col8, col9, col10, col11);
         tv2.getItems().addAll(db.geefOpperator());
 
+        //setonmouseclicked om gegevens te wijzigen
+        tv2.setOnMouseClicked(e->{
+            Opperator o = (Opperator) tv2.getSelectionModel().getSelectedItem();
+            modifyView2 mod2 = new modifyView2(o);
+        });
+
 
         //---------------------------------------------------------------------MatchResult table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         TableView tv3 = new TableView<>();
@@ -165,6 +171,11 @@ public class Inzien {
         tv3.getColumns().addAll(col12, col13, col14, col15, col16, col17);
         tv3.getItems().addAll(db.geefMatchResult());
 
+        //setonmouseclicked om gegevens te wijzigen
+        tv3.setOnMouseClicked(e->{
+            MatchResult mr = (MatchResult) tv3.getSelectionModel().getSelectedItem();
+            modifyView3 mod3 = new modifyView3(mr);
+        });
 
         //---------------------------------------------------------------------Weapon table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -197,6 +208,20 @@ public class Inzien {
         tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23, col24);
         tv4.getItems().addAll(db.geefWeaponResult());
 
+        //setonmouseclicked om gegevens te wijzigen
+        tv4.setOnMouseClicked(e->{
+            WeaponResult wr = (WeaponResult) tv4.getSelectionModel().getSelectedItem();
+            modifyView4 mod4 = new modifyView4(wr);
+        });
+
+
+        Button btnRefresh = new Button("Refresh");
+        btnRefresh.setOnAction(e->{
+            tv1.getItems().setAll(db.geefSpeler());
+            tv2.getItems().setAll(db.geefOpperator());
+            tv3.getItems().setAll(db.geefMatchResult());
+            tv4.getItems().setAll(db.geefWeaponResult());
+        });
 
         Button btnDelete = new Button("Delete");
         btnDelete.setOnAction(e->{
@@ -225,7 +250,8 @@ public class Inzien {
         allTV.add(tv2,2,0);
         allTV.add(tv3,1,1);
         allTV.add(tv4,2,1);
-        allTV.add(btnDelete,1,2);
+        allTV.add(btnRefresh,1,2);
+        allTV.add(btnDelete,2,2);
 
 
         HBox hbox = new HBox();

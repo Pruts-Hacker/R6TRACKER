@@ -1,6 +1,7 @@
 package com.example.r6tracker.Screens;
 
 import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.Opperator;
 import com.example.r6tracker.classes.Speler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,9 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class modifyView {
-
-    public modifyView(Speler s){
+public class modifyView2 {
+    public modifyView2(Opperator o){
         //opbouw nieuw scherm
 
 
@@ -20,13 +20,13 @@ public class modifyView {
         GridPane root = new GridPane();
 
         TextField txtNaam = new TextField();
-        txtNaam.setText(s.getNaam());
-        TextField txtTag = new TextField();
-        txtTag.setText(s.getGamertag());
-        TextField txtLevel = new TextField();
-        txtLevel.setText(String.valueOf(s.getLevel()));
-        TextField txtRank = new TextField();
-        txtRank.setText(s.getRank());
+        txtNaam.setText(o.getNaam());
+        TextField txtType = new TextField();
+        txtType.setText(o.getType());
+        TextField txtAbility = new TextField();
+        txtAbility.setText(o.getAbility());
+        TextField txtMoveSpeed = new TextField();
+        txtMoveSpeed.setText(String.valueOf(o.getMovespeed()));
 
 
 
@@ -40,14 +40,12 @@ public class modifyView {
 
         btnWijzig.setOnAction(e->{
 
-            s.setNaam(txtNaam.getText());
-            s.setGamertag(txtTag.getText());
-            s.setLevel(Integer.valueOf(txtLevel.getText()));
-            s.setRank(txtRank.getText());
-            db.updateSpeler(s);
-
+            o.setNaam(txtNaam.getText());
+            o.setType(txtType.getText());
+            o.setAbility(txtAbility.getText());
+            o.setMovespeed(Integer.valueOf(txtMoveSpeed.getText()));
+            db.updateOpperator(o);
             deStage.close();
-
 
 
         });
@@ -56,9 +54,9 @@ public class modifyView {
 
         //controls toevoegen aan layout
         root.add(txtNaam, 0, 1);
-        root.add(txtTag, 0, 2);
-        root.add(txtLevel, 0, 3);
-        root.add(txtRank,0,4);
+        root.add(txtType, 0, 2);
+        root.add(txtAbility, 0, 3);
+        root.add(txtMoveSpeed,0,4);
         root.add(btnWijzig, 0, 5);
 
 
@@ -78,6 +76,8 @@ public class modifyView {
 
     }
 }
+
+
 
 
 

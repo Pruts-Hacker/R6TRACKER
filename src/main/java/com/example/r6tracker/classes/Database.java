@@ -95,16 +95,39 @@ public class Database {
         return lijst;
     }
 
-    public void updateSpeler(Speler s){
-        String sQuery = "UPDATE speler SET  naam = '" +s.getNaam()+"', gamertag = '"+s.getGamertag()+"', level = '"+ s.getLevel()+"', rank = '"+ s.getRank();
+//    public void updateSpeler(Speler s){
+//        String sQuery = "UPDATE speler SET  naam = '" +s.getNaam()+"', gamertag = '"+s.getGamertag()+"', level = '"+ s.getLevel()+"', rank = '"+ s.getRank()+" WHERE ";
+//
+//        try {
+//            Statement stm = this.conn.createStatement();
+//            stm.execute(sQuery);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
 
+    public void updateSpeler(Speler s) {
         try {
-            Statement stm = this.conn.createStatement();
-            stm.execute(sQuery);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            String sQuery = "UPDATE speler SET naam = ?, gamertag = ?, level = ?, rank = ? WHERE speler_id = ?";
 
+            try {
+                 PreparedStatement preparedStatement = conn.prepareStatement(sQuery) ;
+
+                preparedStatement.setString(1, s.getNaam());
+                preparedStatement.setString(2, s.getGamertag());
+                preparedStatement.setInt(3, s.getLevel());
+                preparedStatement.setString(4, s.getRank());
+                preparedStatement.setInt(5, s.getId());
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                System.out.println(rowsAffected + " row(s) updated");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -208,6 +231,30 @@ public class Database {
         return lijst;
     }
 
+    public void updateOpperator(Opperator o) {
+        try {
+            String sQuery = "UPDATE opperator SET naam = ?, type = ?, ability = ?, move_speed = ? WHERE opperator_id = ?";
+
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(sQuery) ;
+
+                preparedStatement.setString(1, o.getNaam());
+                preparedStatement.setString(2, o.getType());
+                preparedStatement.setString(3, o.getAbility());
+                preparedStatement.setInt(4, o.getMovespeed());
+                preparedStatement.setInt(5, o.getId());
+
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                System.out.println(rowsAffected + " row(s) updated");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void verwijderOpperator() {
         String sQuery = "DELETE FROM opperator";
         try {
@@ -307,6 +354,30 @@ public class Database {
         return lijst;
     }
 
+    public void updateMatchResult(MatchResult mr) {
+        try {
+            String sQuery = "UPDATE matchresult SET kills = ?, deaths = ?, wins = ?, losses = ? WHERE match_id = ?";
+
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(sQuery) ;
+
+                preparedStatement.setInt(1, mr.getKills());
+                preparedStatement.setInt(2, mr.getDeaths());
+                preparedStatement.setInt(3, mr.getWins());
+                preparedStatement.setInt(4, mr.getLosses());
+                preparedStatement.setInt(5, mr.getId());
+
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                System.out.println(rowsAffected + " row(s) updated");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void verwijderMatchResult() {
         String sQuery = "DELETE FROM matchresult";
         try {
@@ -359,7 +430,7 @@ public class Database {
             ResultSet rs = stm.executeQuery(weaponoid);
 
             if (rs.next()) {
-                id = rs.getInt("ms_id");
+                id = rs.getInt("wo_id");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -408,6 +479,30 @@ public class Database {
         return lijst;
     }
 
+    public void updateWeaponResult(WeaponResult wr) {
+        try {
+            String sQuery = "UPDATE weapon SET naam = ?, damage = ?, capacity = ?, firerate = ?, mobility = ? WHERE weapon_id = ?";
+
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(sQuery) ;
+
+                preparedStatement.setString(1, wr.getNaam());
+                preparedStatement.setInt(2, wr.getDamage());
+                preparedStatement.setInt(3, wr.getCapacity());
+                preparedStatement.setInt(4, wr.getFirerate());
+                preparedStatement.setInt(5, wr.getMobility());
+                preparedStatement.setInt(6, wr.getId());
+
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                System.out.println(rowsAffected + " row(s) updated");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void verwijderWeapon() {
         String sQuery = "DELETE FROM weapon";
         try {

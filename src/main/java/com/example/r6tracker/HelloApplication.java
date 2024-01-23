@@ -144,7 +144,7 @@ public class HelloApplication extends Application {
                     level.setStyle("-fx-border-color: red");
                 }else {
                     level.setStyle("-fx-border-color: black");
-                }}
+                }}else {
 
             //ingevoerde data ophalen van de combobox
             String ranking = (String) rank.getValue();
@@ -171,7 +171,7 @@ public class HelloApplication extends Application {
 
            Home home = new Home();
 
-        });
+        }});
         inlog.add(Naam,1,0);
         inlog.add(gamertag,2,0);
         inlog.add(level,1,1);
