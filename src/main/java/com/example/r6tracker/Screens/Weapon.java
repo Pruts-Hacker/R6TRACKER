@@ -18,55 +18,85 @@ import javafx.util.Duration;
 public class Weapon {
 
     public Weapon(){
+        //nieuwe stage aanmaken voor nieuwe pagina
         Stage stage5 = new Stage();
+        // Aanmaken van de hoofdlay-out als een GridPane
         GridPane root = new GridPane();
+        //een id instellen voor de css pagina
         root.setId("Root");
 
+        //Label aanmaken met de paginanaam voor de rechter zijde van de header
         Label titleLabel = new Label("Statistieken Bekijken");
+        //een id instellen voor de css pagina
         titleLabel.setId("title");
+        //een width en een height geven aan de label
         titleLabel.setPrefSize(1050, 55);
+        // een transition toevoegen aan de label
         TranslateTransition tt = new TranslateTransition(Duration.seconds(2), titleLabel);
+        //een startpunt instellen voor de transition
         tt.setFromX(0);
+        //een eindpunt instellen voor de transition
         tt.setToX(312);
+        //een afspeel functie instellen voor de transition
         tt.play();
 
-
+        //Label aanmaken met de applicatie naam voor de linkerzijde van de header
         Label name = new Label("R6TRACKER");
+        //een id instellen voor de css pagina
         name.setId("name");
+        //een height en een width geven aan de label
         name.setPrefSize(150, 55);
+        //een padding geven aan de label zodat er een ruimte is van 15 pixels rondom de label
         name.setPadding(new Insets(15));
 
-
+        //Hbox aanmaken voor de header
         HBox topPane = new HBox();
+        //een id instellen voor de css pagina
         topPane.setId("toppane");
+        //een positie geven aan de hbox
         topPane.setAlignment(Pos.TOP_LEFT);
+        //een height en een width meegeven aan de hbox
         topPane.setPrefSize(1200, 55);
 
-
+        //de labels toevoegen aan de hbox
         topPane.getChildren().addAll(name, titleLabel);
 
 
 
-
+        //gridpane aanmaken voor de menubar
         GridPane leftPane = new GridPane();
+        //een id instellen voor de css pagina
         leftPane.setId("leftpane");
+        //vertical gap instellen voor de items in de gridpane
         leftPane.setVgap(15);
+        //een padding instellen voor de items in de gridpane
         leftPane.setPadding(new Insets(20, 0, 0, 10));/* top right bottom left */
+        //een width en een height meegeven aan de gridpane
         leftPane.setPrefSize(150, 550);
 
-
+        //hbox aanmaken voor het midden van de pagina
         HBox hbox = new HBox();
 
+        //gridpane aanmaken voor de comboboxen
         GridPane Inputs = new GridPane();
+        //een positie geven aan de hbox
         Inputs.setAlignment(Pos.CENTER);
+        //een padding geven aan de items in de gridpane
         Inputs.setPadding(new Insets(0, 0, 0, 250));
+        //een horizontal gap instellen voor de items in de gridpane
         Inputs.setHgap(35);
+        //een vertical gap instellen voor de items in de gridpane
         Inputs.setVgap(35);
 
+        // een comboboc aanmaken voor wapen namen
         ComboBox Name1 = new ComboBox();
+        //een id geven aan de combobox voor de css pagina
         Name1.setId("box1");
+        //een width en een height geven aan de combobox
         Name1.setPrefSize(175, 35);
+        //een info text ingeven voor de combobox
         Name1.setPromptText("Best Weapon");
+        //items toevoegen aan de combobox
         Name1.getItems().add(".44 Mag Semi-Auto");
         Name1.getItems().add("1911 TACOPS");
         Name1.getItems().add("416-C Carbine");
@@ -175,10 +205,15 @@ public class Weapon {
         Name1.getItems().add("V308");
         Name1.getItems().add("Vector .45 ACP");
 
+        // een comboboc aanmaken voor damage types
         ComboBox Name2 = new ComboBox();
+        //een id geven aan de combobox voor de css pagina
         Name2.setId("box2");
+        //een width en een height geven aan de combobox
         Name2.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name2.setPromptText("Damage");
+        //items toevoegen aan de combobox
         Name2.getItems().add("71");
         Name2.getItems().add("61");
         Name2.getItems().add("57");
@@ -200,11 +235,15 @@ public class Weapon {
         Name2.getItems().add("29");
         Name2.getItems().add("21");
 
-
+        //een combobx aanmaken voor Capacity types
         ComboBox Name3 = new ComboBox();
+        //een id geven aan de combobox voor de css pagina
         Name3.setId("box3");
+        //een width en een height gevem aan de combobox
         Name3.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name3.setPromptText("Capacity");
+        //items toevoegen aan de combobox
         Name3.getItems().add("101");
         Name3.getItems().add("50");
         Name3.getItems().add("31");
@@ -218,10 +257,15 @@ public class Weapon {
         Name3.getItems().add("5");
         Name3.getItems().add("1");
 
+        //een combobox aanmaken voor de FireRate types
         ComboBox Name4 = new ComboBox();
+        //een id geven aan de combobox voor de css pagina
         Name4.setId("box4");
+        //een width en een height geven aan de combobox
         Name4.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name4.setPromptText("Fire Rate");
+        //items toevoegen aan de combobox
         Name4.getItems().add("980");
         Name4.getItems().add("970");
         Name4.getItems().add("900");
@@ -239,10 +283,15 @@ public class Weapon {
         Name4.getItems().add("600");
         Name4.getItems().add("1");
 
+        //combobox aanmaken voor de Mobility types
         ComboBox Name5 = new ComboBox();
+        //een id geven aan de combobox voor de css pagina
         Name5.setId("box5");
+        //een width en een height geven aan de combobox
         Name5.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name5.setPromptText("Mobility");
+        //items toevoegen aan de combobox
         Name5.getItems().add("50");
         Name5.getItems().add("45");
         Name5.getItems().add("43");

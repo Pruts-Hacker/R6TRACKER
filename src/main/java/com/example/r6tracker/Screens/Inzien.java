@@ -150,9 +150,6 @@ public class Inzien {
         tv3.setPrefWidth(425);
         tv3.setPrefHeight(225);
 
-        TableColumn<MatchResult, Integer> col12 = new TableColumn<>("Match_id");
-        col12.setCellValueFactory(new PropertyValueFactory<>("id"));
-
         TableColumn<MatchResult, Integer> col13 = new TableColumn<>("Kills");
         col13.setCellValueFactory(new PropertyValueFactory<>("kills"));
 
@@ -168,7 +165,7 @@ public class Inzien {
         TableColumn<MatchResult, Integer> col17 = new TableColumn<>("Speler_id");
         col17.setCellValueFactory(new PropertyValueFactory<>("msid"));
 
-        tv3.getColumns().addAll(col12, col13, col14, col15, col16, col17);
+        tv3.getColumns().addAll(col13, col14, col15, col16, col17);
         tv3.getItems().addAll(db.geefMatchResult());
 
         //setonmouseclicked om gegevens te wijzigen

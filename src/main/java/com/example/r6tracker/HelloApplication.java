@@ -20,7 +20,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
 
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+
+        // Aanmaken van de hoofdlay-out als een GridPane
         GridPane root = new GridPane();
         root.setId("Root");
         root.setPrefSize(1200,600);
@@ -29,11 +30,12 @@ public class HelloApplication extends Application {
 
 
 
-
+        // Label aanmaken voor welkomstbericht
         Label txtWelkom = new Label("Welkom bij de R6TRACKER");
         txtWelkom.setId("welkom");
         txtWelkom.setAlignment(Pos.TOP_CENTER);
 
+        // GridPane aanmaken voor inloggegevens
         GridPane inlog = new GridPane();
         inlog.setId("inlog");
         inlog.setHgap(15);
@@ -41,25 +43,23 @@ public class HelloApplication extends Application {
 
 
 
+        // Tekstvelden aanmaken voor gebruikersnaam, gamertag, level
         TextField Naam = new TextField();
         Naam.setPromptText("Gebruikersnaam");
         Naam.setId("gebruikersnaam");
-        Naam.setPrefSize(175,25);
-
+        Naam.setPrefSize(175, 25);
 
         TextField gamertag = new TextField();
         gamertag.setPromptText("Gamertag");
         gamertag.setId("gamertag");
-        gamertag.setPrefSize(175,25);
-
-
+        gamertag.setPrefSize(175, 25);
 
         TextField level = new TextField();
         level.setPromptText("Level");
         level.setId("level");
-        level.setPrefSize(175,25);
+        level.setPrefSize(175, 25);
 
-
+        // ComboBox aanmaken voor rang gegevens
         ComboBox rank = new ComboBox();
         rank.setPromptText("Rank");
         rank.setId("rank");
@@ -101,18 +101,22 @@ public class HelloApplication extends Application {
         rank.getItems().add("Daimond 1");
         rank.getItems().add("Champion");
 
+        //variabelle aanmaken voor Database class
         Database db = new Database();
 
+        //Button aanmaken voor het opslaan van alle ingevoerde gegevens
         Button btnLogIn = new Button("Opslaan");
         btnLogIn.setId("knop");
         btnLogIn.setAlignment(Pos.CENTER);
 
+        //Variabelle aanmaken voor de SpelerController en SpelerIdOpslaanController class
         SpelerController sc = new SpelerController();
         SpelerIdOpslaanController sio = new SpelerIdOpslaanController();
 
+        //Aanmaken van een setonaction voor de Opslaan button
         btnLogIn.setOnAction(e -> {
 
-
+            //If statament aanmaken voor legevelden contole
             if (rank.getValue() == null || Naam.getText().isEmpty() || gamertag.getText().isEmpty() || level.getText().isEmpty()) {
                 System.out.println("een of meerdere velden zijn niet correct ingevlud");
 
@@ -154,7 +158,7 @@ public class HelloApplication extends Application {
             String tag = gamertag.getText();
             //ingevoerde data ophalen van de textfield level
             String leveling = level.getText();
-
+            //ingevoerde date omzetten naat integer
             int levels = Integer.parseInt(leveling);
 
 
@@ -164,29 +168,38 @@ public class HelloApplication extends Application {
             sc.addSpeler(db.geefSpelerId(), ranking, name, tag, levels);
             sio.addId(db.geefMaxPlayerID());
 
-
+            // gegevens opslaan in database
             db.opslaanSpeler(name, tag, levels, ranking);
+            //system out print aanmaken als extra check of het oplaan lukt
             System.out.println("Aangemaakt playerid = " + db.geefMaxPlayerID());
 
-
+            //Doorverwijzing naar andere pagina
            Home home = new Home();
 
         }});
+
+        //alle textfields, comboboxen en buttons toevoegen aan de Inlog gridpane
         inlog.add(Naam,1,0);
         inlog.add(gamertag,2,0);
         inlog.add(level,1,1);
         inlog.add(rank,2,1);
         inlog.add(btnLogIn,1,3);
+
+        //de gridpanes toevoegen aan de hoofd layout root
         root.add(txtWelkom,1,0);
         root.add(inlog,1,1);
 
 
-
+        //scene aanmaken
         Scene scene = new Scene(root, 1200, 600);
+        //css stylesheet linken aan de pagina
         scene.getStylesheets().add(getClass().getResource("stylesheets/inlog.css").toString());
 
+        //title ingeven voor de pagina
         stage.setTitle("R6TRACKER!");
+        //scene toevoegen aan de stage
         stage.setScene(scene);
+        //de stage weergevem op de pagina
         stage.show();
     }
 
