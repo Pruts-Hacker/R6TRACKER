@@ -21,6 +21,8 @@ public class Inzien {
     public Inzien() {
         // Aanmaken Stage object
         Stage stage4 = new Stage();
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        stage4.setResizable(false);
         GridPane root = new GridPane();
         root.setId("Root");
 

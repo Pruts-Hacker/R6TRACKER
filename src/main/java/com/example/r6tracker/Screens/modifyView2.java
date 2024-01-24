@@ -13,6 +13,8 @@ public class modifyView2 {
     public modifyView2(Opperator o) {
         // Aanmaken stageobject
         Stage deStage = new Stage();
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        deStage.setResizable(false);
         // Aanmaken layout
         GridPane root = new GridPane();
 

@@ -166,8 +166,7 @@ public class HelloApplication extends Application {
                     successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
                     successAlert.showAndWait();
 
-                    // Doorverwijzing naar andere pagina
-                    Home home = new Home();
+                  
                 } catch (Exception ex) {
                     // Toon een melding als er een probleem is bij het opslaan van de gegevens
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);

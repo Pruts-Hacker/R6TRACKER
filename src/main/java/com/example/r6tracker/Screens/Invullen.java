@@ -21,7 +21,8 @@ public class Invullen {
 
     public Invullen() {
         Stage stage3 = new Stage();
-
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        stage3.setResizable(false);
         GridPane root = new GridPane();
         root.setId("Root");
 

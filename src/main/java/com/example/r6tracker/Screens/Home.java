@@ -24,7 +24,8 @@ public class Home {
 
     public Home(){
     Stage stage2 = new Stage();
-
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        stage2.setResizable(false);
     GridPane root = new GridPane();
     root.setId("Root");
 
