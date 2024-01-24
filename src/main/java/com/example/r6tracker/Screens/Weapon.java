@@ -20,6 +20,8 @@ public class Weapon {
     public Weapon(){
         //nieuwe stage aanmaken voor nieuwe pagina
         Stage stage5 = new Stage();
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        stage5.setResizable(false);
         // Aanmaken van de hoofdlay-out als een GridPane
         GridPane root = new GridPane();
         //een id instellen voor de css pagina
@@ -303,14 +305,26 @@ public class Weapon {
         Name5.getItems().add("36");
         Name5.getItems().add("35");
 
+
+        //variabele aanmaken voor Database class
         Database db = new Database();
+
+        //variabele aanmaken voor WeaponResultController class
         WeaponResultController wrc = new WeaponResultController();
 
+        //Button aanmaken voor het opslaan van ingevulde gegevens
         Button btnOpslaan = new Button("Opslaan");
+
+        //een id geven aan de button voor de css pagina
         btnOpslaan.setId("opslaan");
+
+        //een width en een height geven aan de button
         btnOpslaan.setPrefSize(175, 35);
+
+        //Aanmaken van een setonaction voor de Opslaan button
         btnOpslaan.setOnAction(e -> {
 
+            //if statement aanmaken voor een alert wanneer de velden leeg zijn
             if (Name1.getValue() == null || Name2.getValue() == null || Name3.getValue() == null || Name4.getValue() == null || Name5.getValue() == null ) {
                 System.out.println("een of meerdere velden zijn niet correct ingevlud");
 
@@ -349,7 +363,29 @@ public class Weapon {
                     Name5.setStyle("-fx-border-color: red");
                 }else {
                     Name5.setStyle("-fx-border-color: black");
-                }}
+                }}else{
+                try {
+
+
+                    // Toon een melding dat de gegevens zijn opgeslagen
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Succes");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
+                    successAlert.showAndWait();
+
+                    // Doorverwijzing naar andere pagina
+                    Home home = new Home();
+                } catch (Exception ex) {
+                    // Toon een melding als er een probleem is bij het opslaan van de gegevens
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Fout bij opslaan");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
+                    errorAlert.showAndWait();
+                }
+            }
+
 
             //ingevoerde data ophalen van de combobox
             String naam = Name1.getValue().toString();
@@ -370,34 +406,43 @@ public class Weapon {
 
 
 
-            //  gegevens opslaan in array
+            //  gegevens opslaan in arraylist
             wrc.addWeaponResult(db.geefWeaponId(), naam, dmg, cpy, fr, mby, db.geefWeaponOpperatorId());
 
 
-
+            //gegevens opslaan in database
             db.opslaanWeapon(naam, dmg, cpy, fr, mby, db.geefMaxOpperatorID());
+
+            //de pagina sluiten als er op de knop wordt gedrukt
             stage5.close();
 
 
 
         });
 
-            Inputs.add(Name1,1,0);
+        //de comboboxen toevoegen aan de gridpane
+        Inputs.add(Name1,1,0);
         Inputs.add(Name2,2,0);
         Inputs.add(Name3,1,1);
         Inputs.add(Name4,2,1);
         Inputs.add(Name5,1,2);
         Inputs.add(btnOpslaan,2,2);
 
+        //de gridpanes toevoegen aan de hbox
         hbox.getChildren().addAll(leftPane, Inputs);
+        //de header en de hbox toevoegen aan de hoofd layout
         root.add(topPane, 1, 0);
         root.add(hbox, 1, 1);
 
-
+        //scene aanmaken
         Scene scene5 = new Scene(root, 1200, 600);
+        //stylesheet koppelen aan de scene
         scene5.getStylesheets().add(getClass().getResource("/com/example/r6tracker/stylesheets/Weapon.css").toString());
+        //scene toevoegen aan de stage
         stage5.setScene(scene5);
+        //de stage ee title geven
         stage5.setTitle("R6TRACKER");
+        //de stage weergeven op de pagina
         stage5.show();
     }
 

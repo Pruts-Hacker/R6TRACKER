@@ -267,21 +267,7 @@ public class Database {
 
     //-------------------------------------------------------------- Alle MatchResult database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public int geefMaxMatchID() {
-        String MidOpslaan = "SELECT MAX(match_id) as m_id FROM matchresult";
-        int id = 0;
-        try {
-            Statement stm = this.conn.createStatement();
-            ResultSet rs = stm.executeQuery(MidOpslaan);
 
-            if (rs.next()) {
-                id = rs.getInt("m_id");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return id;
-    }
 
     public int geefMatchId() {
         String matchId = "SELECT match_id as id FROM matchresult";
@@ -390,21 +376,7 @@ public class Database {
 
     //-------------------------------------------------------------- Alle Weapon database gegevens------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public int geefMaxWeaponID() {
-        String WidOpslaan = "SELECT MAX(weapon_id) as w_id FROM weapon";
-        int id = 0;
-        try {
-            Statement stm = this.conn.createStatement();
-            ResultSet rs = stm.executeQuery(WidOpslaan);
 
-            if (rs.next()) {
-                id = rs.getInt("w_id");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return id;
-    }
 
     public int geefWeaponId() {
         String weaponid = "SELECT weapon_id as id FROM weapon";

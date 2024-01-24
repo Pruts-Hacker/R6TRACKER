@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.converter.IntegerStringConverter;
 
 public class Invullen {
 
@@ -143,20 +144,43 @@ public class Invullen {
         Name5.setPrefSize(175, 35);
         Name5.setPromptText("Kills");
 
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), null, c ->
+                (c.getControlNewText().matches("\\d*") ? c : null));
+
+        // Voeg de TextFormatter toe aan de TextField
+        Name5.setTextFormatter(textFormatter);
+
         TextField Name6 = new TextField();
         Name6.setId("box6");
         Name6.setPrefSize(175, 35);
         Name6.setPromptText("Deaths");
+
+        TextFormatter<Integer> textFormatter2 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
+                (c.getControlNewText().matches("\\d*") ? c : null));
+
+        // Voeg de TextFormatter toe aan de TextField
+        Name6.setTextFormatter(textFormatter2);
 
         TextField Name7 = new TextField();
         Name7.setId("box7");
         Name7.setPrefSize(175, 35);
         Name7.setPromptText("Wins");
 
+
+        TextFormatter<Integer> textFormatter3 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
+                (c.getControlNewText().matches("\\d*") ? c : null));
+        // Voeg de TextFormatter toe aan de TextField
+        Name7.setTextFormatter(textFormatter3);
+
         TextField Name8 = new TextField();
         Name8.setId("box8");
         Name8.setPrefSize(175, 35);
         Name8.setPromptText("Losses");
+
+        TextFormatter<Integer> textFormatter4 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
+                (c.getControlNewText().matches("\\d*") ? c : null));
+        // Voeg de TextFormatter toe aan de TextField
+        Name8.setTextFormatter(textFormatter4);
 
         Button Name9 = new Button("Best Weapon");
         Name9.setId("box9");
@@ -230,6 +254,33 @@ public class Invullen {
                     Name8.setStyle("-fx-border-color: black");
                 }}
 
+            if (Name.getValue() == null || Name2.getValue() == null || Name3.getValue() == null ||
+                    Name4.getValue() == null || Name5.getText().isEmpty() || Name6.getText().isEmpty() ||
+                    Name7.getText().isEmpty() || Name8.getText().isEmpty()) {
+
+                // ... (rest van de validatie en meldingen bij lege velden)
+
+            } else {
+                try {
+                    // (rest van je code om gegevens op te slaan)
+
+                    // Toon een melding dat de gegevens zijn opgeslagen
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Succes");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
+                    successAlert.showAndWait();
+                } catch (Exception ex) {
+                    // Toon een melding als er een probleem is bij het opslaan van de gegevens
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Fout bij opslaan");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
+                    errorAlert.showAndWait();
+                }
+            }
+
+
             //ingevoerde data ophalen van de combobox
             String type = Name.getValue().toString();
             //ingevoerde data ophalen van de combobox
@@ -271,7 +322,7 @@ public class Invullen {
             oio.addId(db.geefMaxOpperatorID());
             db.opslaanMatchresult(Kills, Deaths, Wins, Losses, db.geefMaxPlayerID());
             System.out.println("Aangemaakt opperatorid = " + db.geefMaxOpperatorID());
-            System.out.println("Aangemaakt matchid = " + db.geefMaxMatchID());
+
 
 
 

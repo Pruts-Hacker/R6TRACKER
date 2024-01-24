@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 
@@ -58,6 +59,12 @@ public class HelloApplication extends Application {
         level.setPromptText("Level");
         level.setId("level");
         level.setPrefSize(175, 25);
+
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), null, c ->
+                (c.getControlNewText().matches("\\d*") ? c : null));
+
+        // Voeg de TextFormatter toe aan de TextField
+        level.setTextFormatter(textFormatter);
 
         // ComboBox aanmaken voor rang gegevens
         ComboBox rank = new ComboBox();
@@ -149,8 +156,31 @@ public class HelloApplication extends Application {
                 }else {
                     level.setStyle("-fx-border-color: black");
                 }}else {
+                try {
 
-            //ingevoerde data ophalen van de combobox
+
+                    // Toon een melding dat de gegevens zijn opgeslagen
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Succes");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
+                    successAlert.showAndWait();
+
+                    // Doorverwijzing naar andere pagina
+                    Home home = new Home();
+                } catch (Exception ex) {
+                    // Toon een melding als er een probleem is bij het opslaan van de gegevens
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Fout bij opslaan");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
+                    errorAlert.showAndWait();
+                }
+            }
+
+
+
+                //ingevoerde data ophalen van de combobox
             String ranking = (String) rank.getValue();
             //ingevoerde data ophalen van de textfield Naam
             String name = Naam.getText();
@@ -176,7 +206,7 @@ public class HelloApplication extends Application {
             //Doorverwijzing naar andere pagina
            Home home = new Home();
 
-        }});
+        });
 
         //alle textfields, comboboxen en buttons toevoegen aan de Inlog gridpane
         inlog.add(Naam,1,0);
@@ -199,6 +229,8 @@ public class HelloApplication extends Application {
         stage.setTitle("R6TRACKER!");
         //scene toevoegen aan de stage
         stage.setScene(scene);
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        stage.setResizable(false);
         //de stage weergevem op de pagina
         stage.show();
     }

@@ -4,6 +4,7 @@ import com.example.r6tracker.classes.Database;
 import com.example.r6tracker.classes.Opperator;
 import com.example.r6tracker.classes.WeaponResult;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -13,18 +14,22 @@ import javafx.stage.Stage;
 public class modifyView4 {
 
     public modifyView4(WeaponResult wr){
-        //opbouw nieuw scherm
 
-
-        //1 aanmaken stageobject
+        //aanmaken stageobject
         Stage deStage = new Stage();
-        //aanmaken layout
+        //de applicatie mag niet groter worden dan de aangegeven width en height
+        deStage.setResizable(false);
+        //aanmaken hoofd layout
         GridPane root = new GridPane();
-
+        //combobox aanmaken voor weapon type
         ComboBox txtWeapon = new ComboBox();
+        //id geven aan de combobox
         txtWeapon.setId("box1");
+        //de combobox een width en height geven
         txtWeapon.setPrefSize(175, 35);
+        //de opgehaalde text uit de database instellen als prompttext
         txtWeapon.setPromptText(wr.getNaam());
+        //items toevoegen aan de combobox
         txtWeapon.getItems().add(".44 Mag Semi-Auto");
         txtWeapon.getItems().add("1911 TACOPS");
         txtWeapon.getItems().add("416-C Carbine");
@@ -133,11 +138,15 @@ public class modifyView4 {
         txtWeapon.getItems().add("V308");
         txtWeapon.getItems().add("Vector .45 ACP");
 
-
+        //Comcobox aanmaken voor Damage type
         ComboBox txtDamage = new ComboBox();
+        // id geven aan combobox
         txtDamage.setId("box2");
+        //een width en een height geven aan de combobox
         txtDamage.setPrefSize(175, 35);
+        //de opgehaalde text uit de database instellen als prompttext
         txtDamage.setPromptText(String.valueOf(wr.getDamage()));
+        //items toevoegen aan de combobox
         txtDamage.getItems().add("71");
         txtDamage.getItems().add("61");
         txtDamage.getItems().add("57");
@@ -159,11 +168,15 @@ public class modifyView4 {
         txtDamage.getItems().add("29");
         txtDamage.getItems().add("21");
 
-
+        //combobox aanmaken voor Capacity type
         ComboBox txtCapacity = new ComboBox();
+        //id geven aan de combobox
         txtCapacity.setId("box3");
+        //een width en een height geven aan de combobox
         txtCapacity.setPrefSize(175, 35);
+        //de opgehaalde text uit de database instellen als prompttext
         txtCapacity.setPromptText(String.valueOf(wr.getCapacity()));
+        //items toevoegen aan de combobox
         txtCapacity.getItems().add("101");
         txtCapacity.getItems().add("50");
         txtCapacity.getItems().add("31");
@@ -177,10 +190,15 @@ public class modifyView4 {
         txtCapacity.getItems().add("5");
         txtCapacity.getItems().add("1");
 
+        //combox aanmaken voor FireRate type
         ComboBox txtFireRate = new ComboBox();
+        //id geven aan de combobox
         txtFireRate.setId("box4");
+        //een width en een height geven aan de combobox
         txtFireRate.setPrefSize(175, 35);
+        //de opgehaalde text uit de database instellen als prompttext
         txtFireRate.setPromptText(String.valueOf(wr.getFirerate()));
+        //items toevoegen aan de combobox
         txtFireRate.getItems().add("980");
         txtFireRate.getItems().add("970");
         txtFireRate.getItems().add("900");
@@ -198,10 +216,15 @@ public class modifyView4 {
         txtFireRate.getItems().add("600");
         txtFireRate.getItems().add("1");
 
+        //combobox aanmaken voor Mobility type
         ComboBox txtMobility = new ComboBox();
+        //id geven aan de combobox
         txtMobility.setId("box5");
+        //een width en een height geven aan de combobox
         txtMobility.setPrefSize(175, 35);
+        //de opgehaalde text uit de database instellen as prompttext
         txtMobility.setPromptText(String.valueOf(wr.getMobility()));
+        //items toevoegen aan de combobox
         txtMobility.getItems().add("50");
         txtMobility.getItems().add("45");
         txtMobility.getItems().add("43");
@@ -215,16 +238,18 @@ public class modifyView4 {
 
 
 
-
+        //button aanmaken voor het wijzigen van gegevens
         Button btnWijzig = new Button("Wijzig");
 
 
 
 
-
+        //variabele aanmaken voor de database class
         Database db = new Database();
 
+        //setonaction geven aan de wijzig button
         btnWijzig.setOnAction(e->{
+            //values ophalen en omzetten in string
             String naamValue = txtWeapon.getValue() != null ? txtWeapon.getValue().toString() : "";
             String damageValue = txtDamage.getValue() != null ? txtDamage.getValue().toString() : "";
             String capacityValue = txtCapacity.getValue() != null ? txtCapacity.getValue().toString() : "";
@@ -252,20 +277,43 @@ public class modifyView4 {
                 wr.setMobility(Integer.parseInt(mobilityValue));
             }
 
+
             // Update the database and close the stage
             db.updateWeaponResult(wr);
-            deStage.close();
-        });
+            try{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succes");
+                alert.setHeaderText(null);
+                alert.setContentText("De gegevens zijn succesvol opgeslagen.");
+                alert.showAndWait();
+
+                // Stage sluiten na het updaten
+                deStage.close();
+            } catch (NumberFormatException ex) {
+                // Foutmelding weergeven als het level geen geldig getal is
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Fout");
+                alert.setHeaderText(null);
+                alert.setContentText("Voer een geldig getal in voor het level.");
+                alert.showAndWait();
+            } catch (Exception ex){
+                // Algemene foutmelding weergeven als er een andere fout optreedt
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Fout");
+                alert.setHeaderText(null);
+                alert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
+                alert.showAndWait();
+
+            }});
 
 
 
         //controls toevoegen aan layout
         root.add(txtWeapon, 0, 1);
         root.add(txtDamage, 0, 2);
-        root.add(txtCapacity, 0, 3);
-        root.add(txtCapacity,0,4);
-        root.add(txtMobility,0,5);
-        root.add(btnWijzig, 0, 6);
+        root.add(txtCapacity,0,3);
+        root.add(txtMobility,0,4);
+        root.add(btnWijzig, 0, 5);
 
 
         // 4 aanmaken scene
