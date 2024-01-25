@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SpelerControllerTest {
 
     @Test
+        //UnitTest test of de methode de gegeven data opslaat
     void addSpeler() {
         SpelerController sc = new SpelerController();
          sc.addSpeler(0, "goud 5", "Gert-Jan", "smonk", 55);

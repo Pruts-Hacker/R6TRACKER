@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DatabaseTest {
 
     @Test
+    //UnitTest test of de methode de juiste speler id ophaald
     void geefMaxPlayerID() {
         Database db = new Database();
        int iUitkomst = db.geefMaxPlayerID();

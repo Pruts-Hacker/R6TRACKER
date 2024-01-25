@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MatchResultControllerTest {
 
     @Test
+    //UnitTest test of de methode de gegeven data opslaat
     void addMatchResult() {
     MatchResultController mc =new MatchResultController();
     mc.addMatchResult(0, 1, 1, 1, 1, 0);

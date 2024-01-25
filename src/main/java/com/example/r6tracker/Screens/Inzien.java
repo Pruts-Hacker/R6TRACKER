@@ -203,7 +203,9 @@ public class Inzien {
             modifyView4 mod4 = new modifyView4(wr);
         });
 
+        //Button aanmaken voor het refreshen van de pagina
         Button btnRefresh = new Button("Refresh");
+        //een setonaction geven aan de refresh button en hier de tablecolumns ingeven
         btnRefresh.setOnAction(e -> {
             tv1.getItems().setAll(db.geefSpeler());
             tv2.getItems().setAll(db.geefOpperator());
@@ -211,7 +213,9 @@ public class Inzien {
             tv4.getItems().setAll(db.geefWeaponResult());
         });
 
+        //Button aanmaken voor het deleten van de gegevens in de database
         Button btnDelete = new Button("Delete");
+        //een setonaction geven aan de delete button en hier de verwijder objecten en tablecolumns ingeven
         btnDelete.setOnAction(e -> {
             db.verwijderSpeler();
             db.verwijderOpperator();
@@ -225,12 +229,16 @@ public class Inzien {
         });
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        // gridpane aanmaken voor alle tableviews
         GridPane allTV = new GridPane();
+        // een horizontal gap geven aan alle items in de gridpane
         allTV.setHgap(20);
+        // een vertical gap geven aan alle items in de gridpane
         allTV.setVgap(20);
+        //een padding geven aan de items in de gridpane
         allTV.setPadding(new Insets(10, 0, 0, 60));
 
+        //de tableviews en de buttons toevoegen aan de gridpane
         allTV.add(tv1, 1, 0);
         allTV.add(tv2, 2, 0);
         allTV.add(tv3, 1, 1);
@@ -238,8 +246,9 @@ public class Inzien {
         allTV.add(btnRefresh, 1, 2);
         allTV.add(btnDelete, 2, 2);
 
+        //hbox aanmaken
         HBox hbox = new HBox();
-
+        //de gridpanes toevoegen aan de hbox
         hbox.getChildren().addAll(leftPane, allTV);
         root.add(topPane, 1, 0);
         root.add(hbox, 1, 1);
@@ -251,3 +260,6 @@ public class Inzien {
         stage4.show();
     }
 }
+
+
+

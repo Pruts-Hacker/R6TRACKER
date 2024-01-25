@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WeaponResultControllerTest {
 
     @Test
+        //UnitTest test of de methode de gegeven data opslaat
     void addWeaponResult() {
         WeaponResultController wrc = new WeaponResultController();
         wrc.addWeaponResult(0, "john", 1, 1, 1,1 , 1);

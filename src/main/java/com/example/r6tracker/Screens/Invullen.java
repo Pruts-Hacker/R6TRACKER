@@ -20,95 +20,143 @@ public class Invullen {
 
 
     public Invullen() {
+        //stage aanmaken
         Stage stage3 = new Stage();
         //de applicatie mag niet groter worden dan de aangegeven width en height
         stage3.setResizable(false);
+        //gridpane aanmaken voor de hoofdlayout
         GridPane root = new GridPane();
+        //id geven aan de gridpane voor de css pagina
         root.setId("Root");
 
+        //label aaanmaken voor de pagina
         Label titleLabel = new Label("Statistieken Invullen");
+        //id geven aan de label voor de css pagina
         titleLabel.setId("title");
+        //een width en een height geven aan de label
         titleLabel.setPrefSize(1050, 55);
+        //animation toevoegen aan de label
         TranslateTransition tt = new TranslateTransition(Duration.seconds(2), titleLabel);
+        //startpunt ingeven
         tt.setFromX(0);
+        //eindpunt ingeven
         tt.setToX(312);
+        //play functie geven
         tt.play();
 
-
+        //label aaanmaken voor de applicatie naam
         Label name = new Label("R6TRACKER");
+        //id geven aan de label
         name.setId("name");
+        //een width en een height geven aan de label
         name.setPrefSize(150, 55);
+        //een padding geven aan de label
         name.setPadding(new Insets(15));
 
-
+        //hbox aanmaken
         HBox topPane = new HBox();
+        //id geven aan de hbox
         topPane.setId("toppane");
+        //een positie geven aan de hbox
         topPane.setAlignment(Pos.TOP_LEFT);
+        //een width en een height geven aan de hbox
         topPane.setPrefSize(1200, 55);
 
-
+        //labels toevoegen aan de gridpane
         topPane.getChildren().addAll(name, titleLabel);
 
-
+        //button aanmaken voor invullen pagina
         Button menu1 = new Button("Statistieken Invullen");
+        //id geven aan de button
         menu1.setId("menu1");
-        menu1.setStyle("");
+        //een setonaction geven aan de button
         menu1.setOnAction(e -> {
+            //doorverwijzing naar invullen pagina
             Invullen inv = new Invullen();
         });
 
-
+        //button aanmaken voor inzien pagina
         Button menu2 = new Button("Statistieken Bekijken");
+        //id geven aan de button
         menu2.setId("menu2");
+        //een setonaction geven aan de button
         menu2.setOnAction(e -> {
+            //doorverwijzing naar inzien pagina
             Inzien inz = new Inzien();
         });
 
 
-
+        //gridpane aanmaken voor het midden van de pagina
         GridPane leftPane = new GridPane();
+        //id geven aan de gridpane
         leftPane.setId("leftpane");
+        //een vertical gap geven aan de items in de gridpane
         leftPane.setVgap(15);
+        //een padding geven aan de items in de gridpane
         leftPane.setPadding(new Insets(20, 0, 0, 10));/* top right bottom left */
+        //een width en een height geven aan de gridpane
         leftPane.setPrefSize(150, 550);
+        //menu buttons toevoegen aan de gridpane
         leftPane.add(menu1, 1, 0);
         leftPane.add(menu2, 1, 1);
 
 
-
+        //gridpane aanmaken voor het midden voor de inputs
         GridPane Inputs = new GridPane();
+        //positie geven aan de geidpane
         Inputs.setAlignment(Pos.CENTER);
+        //padding geven aan de gridpane
         Inputs.setPadding(new Insets(0, 0, 0, 250));
+        //een horizontal gap geven aan de items in de gridpane
         Inputs.setHgap(35);
+        //een vertical gap geven aan de items in de gridpane
         Inputs.setVgap(35);
 
+        //combobox aanmaken voor opperator types
         ComboBox Name = new ComboBox();
+        //id geven aan de combobox
         Name.setId("box");
+        //een width en een height geven aan de combobox
         Name.setPrefSize(175, 35);
+        //items toevoegen aan de combobox
         Name.getItems().add("Attacker");
         Name.getItems().add("Defender");
+        //een info text geven aan de combobox
         Name.setPromptText("Opperator Type");
 
 
-
+            //comboboc aanmaken voor de name types
             ComboBox Name2 = new ComboBox<>();
+            //id geven aan de combobox
             Name2.setId("box2");
+            //een width en een height geven aan de combobox
             Name2.setPrefSize(175, 35);
+            //een info text geven aan de combobox
             Name2.setPromptText("Operator Name");
 
+        //comboboc aanmaken voor Ability types
         ComboBox Name3 = new ComboBox<>();
+        //id geven aan de combobox
         Name3.setId("box3");
+        //een width en een height geven aan de combobox
         Name3.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name3.setPromptText("Ability");
 
+        //een combobox aanmaken voor de MoveSpeed types
         ComboBox Name4 = new ComboBox<>();
+        //een id geven aan de combobox
         Name4.setId("box4");
+        //een width en een height geven aan de combobox
         Name4.setPrefSize(175, 35);
+        //een info text geven aan de combobox
         Name4.setPromptText("Move Speed");
+        //items toevoegen aan de combobox
         Name4.getItems().addAll("1", "2", "3");
 
-
+        //combobox Name een setonaction geven voor invoer mogelijkheden
         Name.setOnAction(e -> {
+            //if statement aan maken voor name2 en name3 zodat de juiste namen en abilitys bij de juiste types hooren
                 if ("Attacker".equals(Name.getValue())) {
                     Name2.getItems().clear();
                     Name2.getItems().addAll("Ace", "Amaru", "Ash", "Blackbeard","Blitz", "Brava", "Buck", "Capitão", "Dokkaebi", "Finka", "Flores", "Fuze", "Glaz",
@@ -139,12 +187,16 @@ public class Invullen {
 
 
 
-
+        // Aanmaken van TextFields voor kills gegevens
         TextField Name5 = new TextField();
+        //id geven aan de textfield
         Name5.setId("box5");
+        //een width en een height geven aan de textfield
         Name5.setPrefSize(175, 35);
+        //info text geven aan de textfield
         Name5.setPromptText("Kills");
 
+        //een textformatter aanmaken zodat er geen letters kunnen worden ingevuld
         TextFormatter<Integer> textFormatter = new TextFormatter<>(new IntegerStringConverter(), null, c ->
                 (c.getControlNewText().matches("\\d*") ? c : null));
 
@@ -155,7 +207,7 @@ public class Invullen {
         Name6.setId("box6");
         Name6.setPrefSize(175, 35);
         Name6.setPromptText("Deaths");
-
+        //een textformatter aanmaken zodat er geen letters kunnen worden ingevuld
         TextFormatter<Integer> textFormatter2 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
                 (c.getControlNewText().matches("\\d*") ? c : null));
 
@@ -167,7 +219,7 @@ public class Invullen {
         Name7.setPrefSize(175, 35);
         Name7.setPromptText("Wins");
 
-
+        //een textformatter aanmaken zodat er geen letters kunnen worden ingevuld
         TextFormatter<Integer> textFormatter3 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
                 (c.getControlNewText().matches("\\d*") ? c : null));
         // Voeg de TextFormatter toe aan de TextField
@@ -177,28 +229,41 @@ public class Invullen {
         Name8.setId("box8");
         Name8.setPrefSize(175, 35);
         Name8.setPromptText("Losses");
-
+        //een textformatter aanmaken zodat er geen letters kunnen worden ingevuld
         TextFormatter<Integer> textFormatter4 = new TextFormatter<>(new IntegerStringConverter(), null, c ->
                 (c.getControlNewText().matches("\\d*") ? c : null));
         // Voeg de TextFormatter toe aan de TextField
         Name8.setTextFormatter(textFormatter4);
 
+        //button aanmaken voor weapon page
         Button Name9 = new Button("Best Weapon");
+        //id geven aan button
         Name9.setId("box9");
+        //een width en een height geven aan de button
         Name9.setPrefSize(175, 35);
 
+        //setonaction geven aan de button om door te gaan naar andere pagina
         Name9.setOnAction(e->{
+            //doorverwijzing andere pagina
             Weapon weapon = new Weapon();
         });
 
+        //database object aanmaken
         Database db = new Database();
+        //opperatoridopslaancontroller object aanmaken
         OpperatorIdOpslaanController oio = new OpperatorIdOpslaanController();
+        //matchresultcontroller object aanmaken
         MatchResultController mrc = new MatchResultController();
+        //opperatorcontroller object aanmaken
         OpperatorController oc = new OpperatorController();
 
+        //button aanmaken voor het opslaan van gegevens
         Button btnOpslaan = new Button("Opslaan");
+        //een width en een height geven aan de button
         btnOpslaan.setPrefSize(175, 35);
+        //setonaction geven aan de button voor fout controle en opslaan gegevens
         btnOpslaan.setOnAction(e->{
+            //if statement voor fout afhandeling
             if (Name.getValue() == null || Name2.getValue() == null ||  Name3.getValue() == null || Name4.getValue() == null || Name5.getText().isEmpty() || Name6.getText().isEmpty() || Name7.getText().isEmpty() || Name8.getText().isEmpty()) {
                 System.out.println("een of meerdere velden zijn niet correct ingevlud");
 
@@ -255,6 +320,7 @@ public class Invullen {
                     Name8.setStyle("-fx-border-color: black");
                 }}
 
+            //if statement voor melding
             if (Name.getValue() == null || Name2.getValue() == null || Name3.getValue() == null ||
                     Name4.getValue() == null || Name5.getText().isEmpty() || Name6.getText().isEmpty() ||
                     Name7.getText().isEmpty() || Name8.getText().isEmpty()) {
@@ -263,7 +329,6 @@ public class Invullen {
 
             } else {
                 try {
-                    // (rest van je code om gegevens op te slaan)
 
                     // Toon een melding dat de gegevens zijn opgeslagen
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -330,7 +395,7 @@ public class Invullen {
 
         });
 
-
+        //alle invoervelden toevoegen aan de gridpane
         Inputs.add(Name, 1, 0);
         Inputs.add(Name2, 2, 0);
         Inputs.add(Name3, 1, 1);
@@ -341,13 +406,15 @@ public class Invullen {
         Inputs.add(Name8,2,3);
         Inputs.add(Name9,1,4);
         Inputs.add(btnOpslaan, 2, 4);
-
+        //hbox aanmaken
         HBox hbox = new HBox();
 
-
+        //gridpanes toevoegen aan hbox
         hbox.getChildren().addAll(leftPane, Inputs);
+        //gridpane en hbox toevoegen aan hoofdlayout
         root.add(topPane, 1, 0);
         root.add(hbox, 1, 1);
+        //scene aanmaken
         Scene scene3 = new Scene(root, 1200, 600);
         scene3.getStylesheets().add(getClass().getResource("/com/example/r6tracker/stylesheets/Invullen.css").toString());
         stage3.setScene(scene3);
