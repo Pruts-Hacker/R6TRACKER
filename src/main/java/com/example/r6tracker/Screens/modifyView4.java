@@ -1,13 +1,11 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
-import com.example.r6tracker.classes.Opperator;
+import com.example.r6tracker.classes.DatabaseWeapon;
 import com.example.r6tracker.classes.WeaponResult;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -245,7 +243,7 @@ public class modifyView4 {
 
 
         //variabele aanmaken voor de database class
-        Database db = new Database();
+        DatabaseWeapon dbw = new DatabaseWeapon();
 
         //setonaction geven aan de wijzig button
         btnWijzig.setOnAction(e->{
@@ -279,7 +277,7 @@ public class modifyView4 {
 
 
             // Update the database and close the stage
-            db.updateWeaponResult(wr);
+            dbw.updateWeaponResult(wr);
             try{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succes");

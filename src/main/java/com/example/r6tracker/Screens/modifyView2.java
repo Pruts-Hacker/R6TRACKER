@@ -1,6 +1,6 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.DatabaseOpperator;
 import com.example.r6tracker.classes.Opperator;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -75,7 +75,7 @@ public class modifyView2 {
         Button btnWijzig = new Button("Wijzig");
 
         // Database object
-        Database db = new Database();
+        DatabaseOpperator dbo = new DatabaseOpperator();
 
         // Event handler voor het wijzigen van Opperator
         btnWijzig.setOnAction(e -> {
@@ -103,7 +103,7 @@ public class modifyView2 {
 
 
 
-            db.updateOpperator(o);
+            dbo.updateOpperator(o);
             try{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succes");

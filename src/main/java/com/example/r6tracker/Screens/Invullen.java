@@ -1,9 +1,6 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
-import com.example.r6tracker.classes.MatchResultController;
-import com.example.r6tracker.classes.OpperatorController;
-import com.example.r6tracker.classes.OpperatorIdOpslaanController;
+import com.example.r6tracker.classes.*;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -249,7 +246,9 @@ public class Invullen {
         });
 
         //database object aanmaken
-        Database db = new Database();
+        DatabaseSpeler dbs = new DatabaseSpeler();
+        DatabaseOpperator dbo = new DatabaseOpperator();
+        DatabaseMatchResult dbmr = new DatabaseMatchResult();
         //opperatoridopslaancontroller object aanmaken
         OpperatorIdOpslaanController oio = new OpperatorIdOpslaanController();
         //matchresultcontroller object aanmaken
@@ -380,14 +379,14 @@ public class Invullen {
 
 
             //  gegevens opslaan in array
-            mrc.addMatchResult(db.geefMatchId(), Kills, Deaths, Wins, Losses, db.geefMatchSpelerId());
-            oc.addOpperator(db.geefOpperatorId(), naam, type, Ability, moveSpeed, db.geefOppSpelerId());
+            mrc.addMatchResult(dbmr.geefMatchId(), Kills, Deaths, Wins, Losses, dbmr.geefMatchSpelerId());
+            oc.addOpperator(dbo.geefOpperatorId(), naam, type, Ability, moveSpeed, dbo.geefOppSpelerId());
 
 
-            db.opslaanOpperator(naam, type, Ability, moveSpeed, db.geefMaxPlayerID());
-            oio.addId(db.geefMaxOpperatorID());
-            db.opslaanMatchresult(Kills, Deaths, Wins, Losses, db.geefMaxPlayerID());
-            System.out.println("Aangemaakt opperatorid = " + db.geefMaxOpperatorID());
+            dbo.opslaanOpperator(naam, type, Ability, moveSpeed, dbs.geefMaxPlayerID());
+            oio.addId(dbo.geefMaxOpperatorID());
+            dbmr.opslaanMatchresult(Kills, Deaths, Wins, Losses, dbs.geefMaxPlayerID());
+            System.out.println("Aangemaakt opperatorid = " + dbo.geefMaxOpperatorID());
 
 
 

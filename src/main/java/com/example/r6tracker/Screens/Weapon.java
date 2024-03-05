@@ -1,6 +1,7 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.DatabaseOpperator;
+import com.example.r6tracker.classes.DatabaseWeapon;
 import com.example.r6tracker.classes.WeaponResultController;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
@@ -307,7 +308,8 @@ public class Weapon {
 
 
         //variabele aanmaken voor Database class
-        Database db = new Database();
+        DatabaseWeapon dbw = new DatabaseWeapon();
+        DatabaseOpperator dbo = new DatabaseOpperator();
 
         //variabele aanmaken voor WeaponResultController class
         WeaponResultController wrc = new WeaponResultController();
@@ -407,11 +409,11 @@ public class Weapon {
 
 
             //  gegevens opslaan in arraylist
-            wrc.addWeaponResult(db.geefWeaponId(), naam, dmg, cpy, fr, mby, db.geefWeaponOpperatorId());
+            wrc.addWeaponResult(dbw.geefWeaponId(), naam, dmg, cpy, fr, mby, dbw.geefWeaponOpperatorId());
 
 
             //gegevens opslaan in database
-            db.opslaanWeapon(naam, dmg, cpy, fr, mby, db.geefMaxOpperatorID());
+            dbw.opslaanWeapon(naam, dmg, cpy, fr, mby, dbo.geefMaxOpperatorID());
 
             //de pagina sluiten als er op de knop wordt gedrukt
             stage5.close();

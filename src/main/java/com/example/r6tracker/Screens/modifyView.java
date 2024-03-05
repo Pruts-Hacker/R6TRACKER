@@ -1,6 +1,6 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.DatabaseSpeler;
 import com.example.r6tracker.classes.Speler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -76,7 +76,7 @@ public class modifyView {
         Button btnWijzig = new Button("Wijzig");
 
         // Database object
-        Database db = new Database();
+        DatabaseSpeler dbs = new DatabaseSpeler();
 
         // Event handler voor het wijzigen van Speler
         btnWijzig.setOnAction(e -> {
@@ -97,7 +97,7 @@ public class modifyView {
 
 
             // Spelergegevens updaten in de database
-            db.updateSpeler(s);
+            dbs.updateSpeler(s);
             try{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succes");

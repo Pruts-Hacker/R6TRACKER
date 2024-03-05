@@ -1,8 +1,7 @@
 package com.example.r6tracker;
 
 import com.example.r6tracker.Screens.Home;
-import com.example.r6tracker.Screens.Invullen;
-import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.DatabaseSpeler;
 import com.example.r6tracker.classes.SpelerController;
 import com.example.r6tracker.classes.SpelerIdOpslaanController;
 import javafx.application.Application;
@@ -109,7 +108,7 @@ public class HelloApplication extends Application {
         rank.getItems().add("Champion");
 
         //variabelle aanmaken voor Database class
-        Database db = new Database();
+        DatabaseSpeler dbs = new DatabaseSpeler();
 
         //Button aanmaken voor het opslaan van alle ingevoerde gegevens
         Button btnLogIn = new Button("Opslaan");
@@ -194,13 +193,13 @@ public class HelloApplication extends Application {
 
 
             //  gegevens opslaan in array
-            sc.addSpeler(db.geefSpelerId(), ranking, name, tag, levels);
-            sio.addId(db.geefMaxPlayerID());
+            sc.addSpeler(dbs.geefSpelerId(), ranking, name, tag, levels);
+            sio.addId(dbs.geefMaxPlayerID());
 
             // gegevens opslaan in database
-            db.opslaanSpeler(name, tag, levels, ranking);
+            dbs.opslaanSpeler(name, tag, levels, ranking);
             //system out print aanmaken als extra check of het oplaan lukt
-            System.out.println("Aangemaakt playerid = " + db.geefMaxPlayerID());
+            System.out.println("Aangemaakt playerid = " + dbs.geefMaxPlayerID());
 
             //Doorverwijzing naar andere pagina
            Home home = new Home();

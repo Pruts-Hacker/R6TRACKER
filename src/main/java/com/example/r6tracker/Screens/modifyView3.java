@@ -1,8 +1,7 @@
 package com.example.r6tracker.Screens;
 
-import com.example.r6tracker.classes.Database;
+import com.example.r6tracker.classes.DatabaseMatchResult;
 import com.example.r6tracker.classes.MatchResult;
-import com.example.r6tracker.classes.Opperator;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -47,7 +46,7 @@ public class modifyView3 {
 
 
         //variabele aanmaken voor de database class
-        Database db = new Database();
+        DatabaseMatchResult dbmr = new DatabaseMatchResult();
 
         //setonaction geven aan de wijzig button
         btnWijzig.setOnAction(e->{
@@ -59,7 +58,7 @@ public class modifyView3 {
             mr.setLosses(Integer.valueOf(txtLosses.getText()));
 
 
-            db.updateMatchResult(mr);
+            dbmr.updateMatchResult(mr);
             try{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succes");

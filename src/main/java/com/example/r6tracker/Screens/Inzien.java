@@ -72,7 +72,11 @@ public class Inzien {
         leftPane.add(menu2, 1, 1);
 
         // Database object
-        Database db = new Database();
+        DatabaseSpeler dbs = new DatabaseSpeler();
+        DatabaseOpperator dbo= new DatabaseOpperator();
+        DatabaseMatchResult dbmr= new DatabaseMatchResult();
+        DatabaseWeapon dbw= new DatabaseWeapon();
+
 
         //---------------------------------------------------------------------Speler table view--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -96,7 +100,7 @@ public class Inzien {
         col5.setCellValueFactory(new PropertyValueFactory<>("rank"));
 
         tv1.getColumns().addAll(col1, col2, col3, col4, col5);
-        tv1.getItems().setAll(db.geefSpeler());
+        tv1.getItems().setAll(dbs.geefSpeler());
 
         // setonmouseclicked om gegevens te wijzigen
         tv1.setOnMouseClicked(e -> {
@@ -129,7 +133,7 @@ public class Inzien {
         col11.setCellValueFactory(new PropertyValueFactory<>("oppsid"));
 
         tv2.getColumns().addAll(col6, col7, col8, col9, col10, col11);
-        tv2.getItems().addAll(db.geefOpperator());
+        tv2.getItems().addAll(dbo.geefOpperator());
 
         // setonmouseclicked om gegevens te wijzigen
         tv2.setOnMouseClicked(e -> {
@@ -159,7 +163,7 @@ public class Inzien {
         col17.setCellValueFactory(new PropertyValueFactory<>("msid"));
 
         tv3.getColumns().addAll(col13, col14, col15, col16, col17);
-        tv3.getItems().addAll(db.geefMatchResult());
+        tv3.getItems().addAll(dbmr.geefMatchResult());
 
         // setonmouseclicked om gegevens te wijzigen
         tv3.setOnMouseClicked(e -> {
@@ -195,7 +199,7 @@ public class Inzien {
         col24.setCellValueFactory(new PropertyValueFactory<>("oppid"));
 
         tv4.getColumns().addAll(col18, col19, col20, col21, col22, col23, col24);
-        tv4.getItems().addAll(db.geefWeaponResult());
+        tv4.getItems().addAll(dbw.geefWeaponResult());
 
         // setonmouseclicked om gegevens te wijzigen
         tv4.setOnMouseClicked(e -> {
@@ -207,25 +211,25 @@ public class Inzien {
         Button btnRefresh = new Button("Refresh");
         //een setonaction geven aan de refresh button en hier de tablecolumns ingeven
         btnRefresh.setOnAction(e -> {
-            tv1.getItems().setAll(db.geefSpeler());
-            tv2.getItems().setAll(db.geefOpperator());
-            tv3.getItems().setAll(db.geefMatchResult());
-            tv4.getItems().setAll(db.geefWeaponResult());
+            tv1.getItems().setAll(dbs.geefSpeler());
+            tv2.getItems().setAll(dbo.geefOpperator());
+            tv3.getItems().setAll(dbmr.geefMatchResult());
+            tv4.getItems().setAll(dbw.geefWeaponResult());
         });
 
         //Button aanmaken voor het deleten van de gegevens in de database
         Button btnDelete = new Button("Delete");
         //een setonaction geven aan de delete button en hier de verwijder objecten en tablecolumns ingeven
         btnDelete.setOnAction(e -> {
-            db.verwijderSpeler();
-            db.verwijderOpperator();
-            db.verwijderMatchResult();
-            db.verwijderWeapon();
+            dbs.verwijderSpeler();
+            dbo.verwijderOpperator();
+            dbmr.verwijderMatchResult();
+            dbw.verwijderWeapon();
 
-            tv1.getItems().setAll(db.geefSpeler());
-            tv2.getItems().setAll(db.geefOpperator());
-            tv3.getItems().setAll(db.geefMatchResult());
-            tv4.getItems().setAll(db.geefWeaponResult());
+            tv1.getItems().setAll(dbs.geefSpeler());
+            tv2.getItems().setAll(dbo.geefOpperator());
+            tv3.getItems().setAll(dbmr.geefMatchResult());
+            tv4.getItems().setAll(dbw.geefWeaponResult());
         });
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
