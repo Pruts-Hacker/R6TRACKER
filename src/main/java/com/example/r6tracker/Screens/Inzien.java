@@ -221,10 +221,11 @@ public class Inzien {
         Button btnDelete = new Button("Delete");
         //een setonaction geven aan de delete button en hier de verwijder objecten en tablecolumns ingeven
         btnDelete.setOnAction(e -> {
-            dbs.verwijderSpeler();
+            dbw.verwijderWeapon();
             dbo.verwijderOpperator();
             dbmr.verwijderMatchResult();
-            dbw.verwijderWeapon();
+            dbs.verwijderSpeler();
+
 
             tv1.getItems().setAll(dbs.geefSpeler());
             tv2.getItems().setAll(dbo.geefOpperator());

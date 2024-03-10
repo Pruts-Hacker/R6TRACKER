@@ -31,9 +31,10 @@ public class HelloApplication extends Application {
 
 
         // Label aanmaken voor welkomstbericht
-        Label txtWelkom = new Label("Welkom bij de R6TRACKER");
+        Label txtWelkom = new Label("Welkom bij de R6TRACKER \nAls je al een keer je gegevens \nhebt ingevuld klik dan op verder");
         txtWelkom.setId("welkom");
         txtWelkom.setAlignment(Pos.TOP_CENTER);
+
 
         // GridPane aanmaken voor inloggegevens
         GridPane inlog = new GridPane();
@@ -110,132 +111,138 @@ public class HelloApplication extends Application {
         //variabelle aanmaken voor Database class
         DatabaseSpeler dbs = new DatabaseSpeler();
 
-        //Button aanmaken voor het opslaan van alle ingevoerde gegevens
-        Button btnLogIn = new Button("Opslaan");
-        btnLogIn.setId("knop");
-        btnLogIn.setAlignment(Pos.CENTER);
+        Button btnVerder = new Button("Verder");
+        btnVerder.setId("knop");
+        btnVerder.setAlignment(Pos.CENTER);
 
-        //Variabelle aanmaken voor de SpelerController en SpelerIdOpslaanController class
-        SpelerController sc = new SpelerController();
-        SpelerIdOpslaanController sio = new SpelerIdOpslaanController();
+        btnVerder.setOnAction(a->{Home home = new Home();});
 
-        //Aanmaken van een setonaction voor de Opslaan button
-        btnLogIn.setOnAction(e -> {
+// Aanmaken van een setOnAction voor de Verder button
+            //Button aanmaken voor het opslaan van alle ingevoerde gegevens
+            Button btnLogIn = new Button("Opslaan");
+            btnLogIn.setId("knop");
+            btnLogIn.setAlignment(Pos.CENTER);
 
-            //If statament aanmaken voor legevelden contole
-            if (rank.getValue() == null || Naam.getText().isEmpty() || gamertag.getText().isEmpty() || level.getText().isEmpty()) {
-                System.out.println("een of meerdere velden zijn niet correct ingevlud");
+            //Variabelle aanmaken voor de SpelerController en SpelerIdOpslaanController class
+            SpelerController sc = new SpelerController();
+            SpelerIdOpslaanController sio = new SpelerIdOpslaanController();
 
-                //  alert wanneer velden leeg zijn
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Waarschuwing");
-                alert.setHeaderText("een of meerdere velden zijn niet ingevuld");
-                alert.showAndWait();
+            //Aanmaken van een setonaction voor de Opslaan button
+            btnLogIn.setOnAction(e -> {
 
-                //   kleuren textfield border veranderen wanneer leeg
-                if (rank.getValue() == null) {
-                    rank.setStyle("-fx-border-color: red");
-                }else {
-                    rank.setStyle("-fx-border-color: black");
+                //If statament aanmaken voor legevelden contole
+                if (rank.getValue() == null || Naam.getText().isEmpty() || gamertag.getText().isEmpty() || level.getText().isEmpty()) {
+                    System.out.println("een of meerdere velden zijn niet correct ingevlud");
+
+                    //  alert wanneer velden leeg zijn
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Waarschuwing");
+                    alert.setHeaderText("een of meerdere velden zijn niet ingevuld");
+                    alert.showAndWait();
+
+                    //   kleuren textfield border veranderen wanneer leeg
+                    if (rank.getValue() == null) {
+                        rank.setStyle("-fx-border-color: red");
+                    } else {
+                        rank.setStyle("-fx-border-color: black");
+                    }
+
+                    if (Naam.getText().isEmpty()) {
+                        Naam.setStyle("-fx-border-color: red");
+                    } else {
+                        Naam.setStyle("-fx-border-color: black");
+                    }
+
+                    if (gamertag.getText().isEmpty()) {
+                        gamertag.setStyle("-fx-border-color: red");
+                    } else {
+                        gamertag.setStyle("-fx-border-color: black");
+                    }
+                    if (level.getText().isEmpty()) {
+                        level.setStyle("-fx-border-color: red");
+                    } else {
+                        level.setStyle("-fx-border-color: black");
+                    }
+                } else {
+                    try {
+
+
+                        // Toon een melding dat de gegevens zijn opgeslagen
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        successAlert.setTitle("Succes");
+                        successAlert.setHeaderText(null);
+                        successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
+                        successAlert.showAndWait();
+
+
+                    } catch (Exception ex) {
+                        // Toon een melding als er een probleem is bij het opslaan van de gegevens
+                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                        errorAlert.setTitle("Fout bij opslaan");
+                        errorAlert.setHeaderText(null);
+                        errorAlert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
+                        errorAlert.showAndWait();
+                    }
                 }
-
-                if (Naam.getText().isEmpty()) {
-                    Naam.setStyle("-fx-border-color: red");
-                }else {
-                    Naam.setStyle("-fx-border-color: black");
-                }
-
-                if (gamertag.getText().isEmpty()) {
-                    gamertag.setStyle("-fx-border-color: red");
-                }else {
-                    gamertag.setStyle("-fx-border-color: black");
-                }
-                if (level.getText().isEmpty()) {
-                    level.setStyle("-fx-border-color: red");
-                }else {
-                    level.setStyle("-fx-border-color: black");
-                }}else {
-                try {
-
-
-                    // Toon een melding dat de gegevens zijn opgeslagen
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Succes");
-                    successAlert.setHeaderText(null);
-                    successAlert.setContentText("Gegevens zijn succesvol opgeslagen!");
-                    successAlert.showAndWait();
-
-                  
-                } catch (Exception ex) {
-                    // Toon een melding als er een probleem is bij het opslaan van de gegevens
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setTitle("Fout bij opslaan");
-                    errorAlert.setHeaderText(null);
-                    errorAlert.setContentText("Er is een fout opgetreden bij het opslaan van de gegevens.");
-                    errorAlert.showAndWait();
-                }
-            }
-
 
 
                 //ingevoerde data ophalen van de combobox
-            String ranking = (String) rank.getValue();
-            //ingevoerde data ophalen van de textfield Naam
-            String name = Naam.getText();
-            //ingevoerde data ophalen van de textfield gamertag
-            String tag = gamertag.getText();
-            //ingevoerde data ophalen van de textfield level
-            String leveling = level.getText();
-            //ingevoerde date omzetten naat integer
-            int levels = Integer.parseInt(leveling);
+                String ranking = (String) rank.getValue();
+                //ingevoerde data ophalen van de textfield Naam
+                String name = Naam.getText();
+                //ingevoerde data ophalen van de textfield gamertag
+                String tag = gamertag.getText();
+                //ingevoerde data ophalen van de textfield level
+                String leveling = level.getText();
+                //ingevoerde date omzetten naat integer
+                int levels = Integer.parseInt(leveling);
 
 
+                //  gegevens opslaan in array
+                sc.addSpeler(dbs.geefSpelerId(), ranking, name, tag, levels);
+                sio.addId(dbs.geefMaxPlayerID());
+
+                // gegevens opslaan in database
+                dbs.opslaanSpeler(name, tag, levels, ranking);
+                //system out print aanmaken als extra check of het oplaan lukt
+                System.out.println("Aangemaakt playerid = " + dbs.geefMaxPlayerID());
+
+                //Doorverwijzing naar andere pagina
+                Home home = new Home();
+
+            });
+
+            //alle textfields, comboboxen en buttons toevoegen aan de Inlog gridpane
+            inlog.add(Naam, 1, 0);
+            inlog.add(gamertag, 2, 0);
+            inlog.add(level, 1, 1);
+            inlog.add(rank, 2, 1);
+            inlog.add(btnLogIn, 1, 3);
+            inlog.add(btnVerder, 2, 3);
+            //de gridpanes toevoegen aan de hoofd layout root
+            root.add(txtWelkom, 1, 0);
+            root.add(inlog, 1, 1);
 
 
-            //  gegevens opslaan in array
-            sc.addSpeler(dbs.geefSpelerId(), ranking, name, tag, levels);
-            sio.addId(dbs.geefMaxPlayerID());
+            //scene aanmaken
+            Scene scene = new Scene(root, 1200, 600);
+            //css stylesheet linken aan de pagina
+            scene.getStylesheets().add(getClass().getResource("stylesheets/inlog.css").toString());
 
-            // gegevens opslaan in database
-            dbs.opslaanSpeler(name, tag, levels, ranking);
-            //system out print aanmaken als extra check of het oplaan lukt
-            System.out.println("Aangemaakt playerid = " + dbs.geefMaxPlayerID());
-
-            //Doorverwijzing naar andere pagina
-           Home home = new Home();
-
-        });
-
-        //alle textfields, comboboxen en buttons toevoegen aan de Inlog gridpane
-        inlog.add(Naam,1,0);
-        inlog.add(gamertag,2,0);
-        inlog.add(level,1,1);
-        inlog.add(rank,2,1);
-        inlog.add(btnLogIn,1,3);
-
-        //de gridpanes toevoegen aan de hoofd layout root
-        root.add(txtWelkom,1,0);
-        root.add(inlog,1,1);
+            //title ingeven voor de pagina
+            stage.setTitle("R6TRACKER!");
+            //scene toevoegen aan de stage
+            stage.setScene(scene);
+            //de applicatie mag niet groter worden dan de aangegeven width en height
+            stage.setResizable(false);
+            //de stage weergevem op de pagina
+            stage.show();
+        }
 
 
-        //scene aanmaken
-        Scene scene = new Scene(root, 1200, 600);
-        //css stylesheet linken aan de pagina
-        scene.getStylesheets().add(getClass().getResource("stylesheets/inlog.css").toString());
-
-        //title ingeven voor de pagina
-        stage.setTitle("R6TRACKER!");
-        //scene toevoegen aan de stage
-        stage.setScene(scene);
-        //de applicatie mag niet groter worden dan de aangegeven width en height
-        stage.setResizable(false);
-        //de stage weergevem op de pagina
-        stage.show();
+    public static void main(String[] args) { launch(args);
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 
 }
 

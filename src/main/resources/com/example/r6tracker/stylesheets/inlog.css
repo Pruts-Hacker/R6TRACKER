@@ -9,11 +9,11 @@
 }
 
 
-#welkom{
+#welkom {
     -fx-font-size: 24;
     -fx-font-weight: 900;
     -fx-text-fill: #FFFF;
-
+    -fx-text-align:center;
 }
 
 #inlog{

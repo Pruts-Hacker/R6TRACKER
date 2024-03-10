@@ -108,8 +108,9 @@ public class DatabaseOpperator {
             Statement stm = this.conn.createStatement();
 
             // SQL-query om een nieuwe opperator op te slaan in de "opperator" tabel
-            String sql2 = "INSERT INTO opperator VALUES (0,'" + naam + "', '" + type + "','" + ability + "', '" + movespeed + "', '" + i + "')";
-
+            String sql2 = "INSERT INTO opperator " +
+                          "VALUES (0,'" + naam + "', '" + type + "','" + ability + "', '" + movespeed + "', '" + i + "')";
+            
             // Toon de uit te voeren SQL-query in de console (kan worden verwijderd in productiecode)
             System.out.println("Executing SQL statement: " + sql2);
 
