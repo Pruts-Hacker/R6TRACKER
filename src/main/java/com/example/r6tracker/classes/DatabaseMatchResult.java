@@ -10,7 +10,7 @@ public class DatabaseMatchResult {
     //Database connectie leggen
     public DatabaseMatchResult(){
         try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost/r6tracker", "root", "");
+            this.conn = DriverManager.getConnection("jdbc:mysql://bp2.adainforma.tk/bp2_r6tracker", "r6tracker", "31Cb4ul0@");
             System.out.println("Database connection established successfully!");
         } catch (SQLException e) {
             throw new RuntimeException(e);

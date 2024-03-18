@@ -9,7 +9,7 @@ public class DatabaseWeapon {
     public DatabaseWeapon() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/r6tracker", "root", "");
+            this.conn = DriverManager.getConnection("jdbc:mysql://bp2.adainforma.tk/bp2_r6tracker", "r6tracker", "31Cb4ul0@");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
